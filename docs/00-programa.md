@@ -1,5 +1,7 @@
 # Programa — Kubernetes + Kafka (Confluent)
 
+**Metodología y entorno:** [01-metodologia.md](01-metodologia.md) (teoría breve → demo preconstruida → lab constructivo; formador sin código en vivo) · [02-codespace.md](02-codespace.md) (todo en GitHub Codespaces).
+
 ## Objetivos generales
 
 - Comprender la arquitectura de Kafka (incluido **KRaft**).

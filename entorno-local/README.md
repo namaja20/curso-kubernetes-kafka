@@ -1,12 +1,13 @@
-# Entorno local (alternativa)
+# Entorno ejecutable desde el Codespace
 
-Cuando el aula no disponga del laboratorio en navegador, este directorio contendrá la definición reproducible del stack (por ejemplo **Kind** / **k3d** + Kafka en KRaft o **Docker Compose**, según lo que fijemos en la siguiente capa de trabajo).
+Este directorio agrupa scripts, manifiestos auxiliares o definiciones (**Kind**, **k3d**, **Compose**, etc.) pensados para ejecutarse **desde la terminal del GitHub Codespace**, no como “instalación en el PC del alumno”.
+
+La metodología del curso asume que **toda** la práctica ocurre en el Codespace; ver `docs/01-metodologia.md` y `docs/02-codespace.md`.
 
 ## Estado
 
-Estructura reservada; los manifiestos y/o `compose` se añadirán al preparar la capa de entorno.
+Contenido pendiente de la capa de diseño del stack (cluster remoto vs. cluster levantado en el Codespace).
 
-## Requisitos previstos (placeholder)
+## Nota para quien prepare el material
 
-- Docker (o equivalente compatible)
-- `kubectl` y cluster local, o solo Docker según el enfoque elegido
+Los comandos documentados en los `LAB.md` deben ser coherentes con lo que aquí se despliega (nombres de contexto, namespaces, endpoints de brokers).
