@@ -36,7 +36,7 @@ El detalle por temas, laboratorios y rutas en el repositorio está en **[Program
 - **Base conceptual:** antes de cada práctica se introduce el vocabulario y las ideas necesarias, de forma breve y enlazada al ejercicio.
 - **Ejemplos en el repositorio:** dispondrás de manifiestos, scripts y aplicaciones de referencia ya preparados para ilustrar el comportamiento del sistema; el docente los utilizará para explicar el flujo sobre material común a todo el grupo.
 - **Laboratorios guiados:** el grueso del aprendizaje es práctico. Cada laboratorio incluye objetivos claros, pasos ordenados, comprobaciones de que el resultado es el esperado y, en muchos casos, pequeños retos para consolidar lo aprendido.
-- **Trabajo en entorno unificado:** las prácticas se realizan en **GitHub Codespaces** asociado a este repositorio, con las herramientas de línea de comandos y el acceso al entorno de clúster que indique tu organización. No es necesario instalar software en tu equipo personal para seguir el curso.
+- **Trabajo en entorno unificado:** las prácticas se realizan en **GitHub Codespaces** a partir de **tu fork** del repositorio, con las herramientas de línea de comandos y el acceso al entorno de clúster que indique el curso. No es necesario instalar software en tu equipo personal para seguir el curso.
 
 ---
 
@@ -56,8 +56,6 @@ En cada carpeta de laboratorio encontrarás la descripción del ejercicio; el gu
 
 ## Cómo empezar
 
-1. Accede al repositorio o a la plantilla que te facilite tu organización.
-2. Abre un **Codespace** desde GitHub (menú *Code* → *Codespaces*) cuando el docente lo indique, o sigue las credenciales y URLs que recibas para conectar con el clúster de prácticas.
+1. Haz un **fork** de este repositorio en tu cuenta de GitHub.
+2. En tu fork, abre un **Codespace**: botón *Code* → pestaña *Codespaces* → *Create codespace on main* (o la rama que indique el docente).
 3. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
-
-Si tu centro utiliza un fork o una rama concreta, utiliza siempre la rama que te indiquen para el aula.
