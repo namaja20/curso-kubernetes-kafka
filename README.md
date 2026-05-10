@@ -1,38 +1,63 @@
-# Formación: Kubernetes + Kafka (Confluent)
+# Kubernetes y Kafka (Confluent)
 
-Capacitación para **comprender, operar y diagnosticar** una plataforma Kafka (Confluent) en entornos modernos, incluyendo **Kubernetes**.
+Formación orientada a **comprender, operar y diagnosticar** una plataforma de **Apache Kafka** en modo **Confluent**, desplegada y operada en entornos **Kubernetes**, con énfasis en el comportamiento real del sistema y la resolución de incidencias.
 
-- **Duración total:** 32 h  
-- **Metodología:** ver **[Metodología didáctica](docs/01-metodologia.md)** — ciclo *teoría breve* → *demo con repo preconstruido* → *laboratorio constructivo*; **todo en [GitHub Codespaces](docs/02-codespace.md)**.
+**Duración:** 32 horas.
+
+---
+
+## Objetivos
+
+Al finalizar el curso serás capaz de:
+
+- Explicar la arquitectura de Kafka, incluido el modo **KRaft** (sin ZooKeeper).
+- Operar un clúster Kafka en entorno Confluent: topics, particiones, productores y consumidores.
+- Diagnosticar problemas habituales: lag, replicación, consumo y disponibilidad.
+- Utilizar componentes Confluent relevantes: **Schema Registry**, **Kafka Connect** y una introducción a **ksqlDB**.
+- Relacionar el despliegue de Kafka con **Kubernetes** y con el papel de los **operadores** (visión **Confluent for Kubernetes / CFK**).
+- Aplicar comandos y flujos de trabajo en **kubectl** para inspeccionar cargas de trabajo, configuración y registros.
+
+---
+
+## Contenidos
+
+El programa se organiza en **tres bloques**:
+
+1. **Kubernetes (12 h)** — Fundamentos de contenedores y orquestación; despliegue y exposición de aplicaciones; escalado y actualizaciones; diagnóstico; ConfigMaps y Secrets. Cuatro laboratorios prácticos.
+2. **Kafka y Confluent (18 h)** — Modelo de event streaming; brokers, topics, particiones; grupos de consumo y offsets; replicación y tolerancia a fallos; lag y operación de topics; **Kafka Connect**. Ocho laboratorios prácticos.
+3. **Integración (2 h)** — Kafka en Kubernetes y un recorrido extremo a extremo (productor → topic → consumidor). Dos laboratorios prácticos.
+
+El detalle por temas, laboratorios y rutas en el repositorio está en **[Programa del curso](docs/00-programa.md)**.
+
+---
+
+## Metodología (cómo se imparte el curso)
+
+- **Base conceptual:** antes de cada práctica se introduce el vocabulario y las ideas necesarias, de forma breve y enlazada al ejercicio.
+- **Ejemplos en el repositorio:** dispondrás de manifiestos, scripts y aplicaciones de referencia ya preparados para ilustrar el comportamiento del sistema; el docente los utilizará para explicar el flujo sobre material común a todo el grupo.
+- **Laboratorios guiados:** el grueso del aprendizaje es práctico. Cada laboratorio incluye objetivos claros, pasos ordenados, comprobaciones de que el resultado es el esperado y, en muchos casos, pequeños retos para consolidar lo aprendido.
+- **Trabajo en entorno unificado:** las prácticas se realizan en **GitHub Codespaces** asociado a este repositorio, con las herramientas de línea de comandos y el acceso al entorno de clúster que indique tu organización. No es necesario instalar software en tu equipo personal para seguir el curso.
+
+---
 
 ## Estructura del repositorio
 
-| Ruta | Contenido |
-|------|-----------|
-| `docs/` | Programa (`00-programa.md`), metodología (`01-metodologia.md`), Codespace (`02-codespace.md`) |
-| `bloque-1-kubernetes/` | Fundamentos K8s + LAB 1–4 |
-| `bloque-2-kafka-confluent/` | Fundamentos Kafka/Confluent + LAB 5–12 |
-| `bloque-3-integracion/` | LAB 13–14 (K8s + pipeline end-to-end) |
-| `entorno-local/` | Scripts y definiciones invocables **desde el Codespace** (p. ej. cluster local o utilidades) |
+| Ruta | Descripción |
+|------|-------------|
+| `docs/` | Programa detallado del curso |
+| `bloque-1-kubernetes/` | Fundamentos y laboratorios 1–4 |
+| `bloque-2-kafka-confluent/` | Fundamentos y laboratorios 5–12 |
+| `bloque-3-integracion/` | Laboratorios 13–14 |
+| `entorno-local/` | Scripts y definiciones de apoyo para el entorno de prácticas (según el diseño del laboratorio) |
 
-### Convención por unidad / laboratorio
+En cada carpeta de laboratorio encontrarás la descripción del ejercicio; el guion paso a paso completo se irá publicando en los archivos indicados por el docente (por ejemplo guías en Markdown dentro de la misma carpeta).
 
-Según `docs/01-metodologia.md`, cada tema o `lab-XX` puede incluir:
+---
 
-- `teoria.md` — micro-partes teóricas breves  
-- `demo/` + `DEMO.md` — ejemplo ya montado; el **formador no escribe código en vivo**, solo explica lo entregado  
-- `LAB.md` — laboratorio **constructivo**: bloques de código en Markdown, pasos, validación y retos  
+## Cómo empezar
 
-El `README.md` de cada carpeta de lab sigue siendo el índice / resumen; el guion detallado para alumnado irá en `LAB.md` cuando se redacte.
+1. Accede al repositorio o a la plantilla que te facilite tu organización.
+2. Abre un **Codespace** desde GitHub (menú *Code* → *Codespaces*) cuando el docente lo indique, o sigue las credenciales y URLs que recibas para conectar con el clúster de prácticas.
+3. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
 
-## Entorno de prácticas
-
-**Estándar del curso:** [GitHub Codespaces](docs/02-codespace.md) sobre este repo. Terminal, herramientas y acceso al cluster Kafka/Kubernetes del aula se unifican ahí.
-
-## Cómo usar este repo con Cursor (fuera del aula)
-
-Abre la carpeta `curso-kubernetes-kafka` como **raíz del workspace** (`Archivo → Abrir carpeta`) para preparar material. En el aula oficial, el workspace de referencia es el **Codespace**.
-
-## Estado del material
-
-Estructura de bloques y labs lista; metodología y Codespace documentados. Pendiente: contenidos `teoria.md`, `demo/` y `LAB.md` por unidad, y definición técnica del dev container / credenciales del lab.
+Si tu centro utiliza un fork o una rama concreta, utiliza siempre la rama que te indiquen para el aula.

@@ -1,7 +1,5 @@
 # Programa — Kubernetes + Kafka (Confluent)
 
-**Metodología y entorno:** [01-metodologia.md](01-metodologia.md) (teoría breve → demo preconstruida → lab constructivo; formador sin código en vivo) · [02-codespace.md](02-codespace.md) (todo en GitHub Codespaces).
-
 ## Objetivos generales
 
 - Comprender la arquitectura de Kafka (incluido **KRaft**).
@@ -59,6 +57,6 @@
 | 13 | Kafka en Kubernetes (pods, logs, reinicio) | `bloque-3-integracion/lab-13-kafka-en-kubernetes/` |
 | 14 | Pipeline completo Producer → Topic → Consumer | `bloque-3-integracion/lab-14-pipeline-completo/` |
 
-## Resultados esperados (alumnado)
+## Resultados esperados
 
-Ver README raíz y cierre de cada LAB.
+Los resultados de aprendizaje del curso se recogen en el README principal del repositorio; cada laboratorio concreta los logros de su sesión.
