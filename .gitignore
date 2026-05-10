@@ -1,0 +1,22 @@
+# Entornos y secretos
+.env
+.env.*
+!.env.example
+*.pem
+*-kubeconfig
+kubeconfig
+
+# Herramientas locales
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# Logs y temporales
+*.log
+tmp/
+.tmp/
+
+# Backups de clusters / dumps
+*.tar.gz
+dump/
