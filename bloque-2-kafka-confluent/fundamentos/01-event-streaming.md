@@ -53,9 +53,15 @@ Productores   →   [ topic = log distribuido ]   →   N consumidores independi
 
 ![Diagrama "Kafka I" con cuatro entidades: dos productores (A y B) escriben en tres flujos de mensajes representados como bandejas horizontales rellenas de bloques de color (rojo, azul y verde); de cada flujo parte una flecha hacia los consumidores (C y D), donde C recibe el flujo rojo y D recibe el azul y el verde, ilustrando que cada productor puede escribir en varios topics y cada consumidor puede leer de varios topics independientemente](images/productores-consumidores-intro.png)
 
-Frente al modelo clásico de cola, donde un mensaje se reparte entre consumidores y desaparece tras procesarse, Kafka emplea un modelo **publicador/suscriptor** sobre el log: el mismo mensaje puede ser leído por **varios consumidores distintos en paralelo**, en lo que conceptualmente es un *broadcast* desde el topic.
+Para ver la diferencia con respecto a una cola tradicional conviene contrastar los **dos modelos de reparto** que pueden vivir sobre el log. Primero, el modelo clásico de **colas**: cada mensaje del topic se entrega a **un único** consumidor; los demás no lo ven. El resultado es un reparto de carga, pero el mensaje "se gasta" en cuanto alguien lo consume.
+
+![Diagrama titulado "Kafka II - Modelo de colas: los mensajes son repartidos" con una bandeja con cuatro mensajes de colores (morado, rojo, verde y amarillo) y tres consumidores A, B y C; cada mensaje sale por una sola flecha hacia un consumidor distinto, mostrando que en el modelo de cola un mensaje lo recibe exactamente uno de los consumidores](images/modelo-cola-clasica-reparto.png)
+
+A continuación, el modelo **publicador/suscriptor**, que es el que Kafka aplica de manera natural sobre el log: el mismo mensaje puede ser leído por **varios consumidores distintos en paralelo**, en lo que conceptualmente es un *broadcast* desde el topic.
 
 ![Diagrama titulado "Kafka III - Modelo publicador/subscriptor: los mensajes se difunden en broadcast" con un único topic representado como una bandeja con cuatro mensajes de colores (morado, rojo, verde y amarillo) y tres consumidores A, B y C; flechas desde el topic llevan a cada consumidor copias de los mismos mensajes, mostrando que cada consumidor recibe el flujo completo de forma independiente](images/modelo-pub-sub-broadcast.png)
+
+Kafka **combina los dos modelos** mediante el mecanismo de *consumer groups*: dentro de un mismo grupo los consumidores se reparten las particiones (comportamiento tipo cola), y entre grupos distintos cada uno recibe el flujo completo (comportamiento pub/sub). Esa dualidad es lo que hace a Kafka apto para tantos casos de uso distintos sin cambiar de tecnología; los detalles se verán al hablar de *consumer groups*.
 
 Diferencias con la cola tradicional, subrayadas:
 
