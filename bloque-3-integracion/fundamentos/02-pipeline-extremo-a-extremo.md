@@ -110,8 +110,7 @@ El siguiente paso natural es **profundizar en operación avanzada**: monitorizac
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 14 — Pipeline completo →](../lab-14-pipeline-completo/README.md)**
 >

@@ -136,8 +136,7 @@ Ya está el modelo físico. La siguiente pregunta es cómo coordinan varios cons
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 6 — Particiones y distribución →](../lab-06-particiones/README.md)**
 >

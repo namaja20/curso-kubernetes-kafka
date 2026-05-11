@@ -176,8 +176,7 @@ Visto cómo leer en paralelo y cómo recordar por dónde se iba, falta la otra m
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 7 — Consumer groups →](../lab-07-consumer-groups/README.md)**
 >

@@ -143,8 +143,7 @@ Visto cómo **garantizar el contrato** del dato, ahora la otra pieza estrella de
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
 >

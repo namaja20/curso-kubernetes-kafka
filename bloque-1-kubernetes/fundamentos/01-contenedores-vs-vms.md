@@ -103,8 +103,7 @@ Visto qué es un contenedor y cómo se empaqueta con Docker, falta una pregunta 
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)**
 >

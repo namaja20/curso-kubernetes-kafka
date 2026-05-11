@@ -157,8 +157,7 @@ Cerrado el núcleo de Kafka (qué es, cómo se reparte, cómo se replica, cómo 
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 11 — Operación de topics →](../lab-11-operacion-topics/README.md)**
 >

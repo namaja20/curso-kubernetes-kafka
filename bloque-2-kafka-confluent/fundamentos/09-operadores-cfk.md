@@ -162,8 +162,7 @@ El siguiente bloque une lo aprendido en los dos primeros: cómo se ve **Kafka op
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 13 — Operación de Kafka en Kubernetes →](../../bloque-3-integracion/lab-13-kafka-en-kubernetes/README.md)**
 >

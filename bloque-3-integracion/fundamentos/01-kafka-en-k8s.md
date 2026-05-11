@@ -145,8 +145,7 @@ Visto el modelo operativo completo, falta el ejercicio práctico: **construir y 
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 13 — Operación de Kafka en Kubernetes →](../lab-13-kafka-en-kubernetes/README.md)**
 >
