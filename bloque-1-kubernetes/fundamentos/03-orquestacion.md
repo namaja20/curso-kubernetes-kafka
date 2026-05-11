@@ -116,8 +116,7 @@ Justificada la existencia de Kubernetes y vista su función a alto nivel, toca a
 
 ---
 
-> [!TIP]
-> ### Laboratorio
+> [!TIP] Laboratorio
 >
 > **[Lab 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)**
 >
