@@ -51,6 +51,12 @@ Productores   →   [ topic = log distribuido ]   →   N consumidores independi
                                                     (cada uno con su offset)
 ```
 
+![Diagrama "Kafka I" con cuatro entidades: dos productores (A y B) escriben en tres flujos de mensajes representados como bandejas horizontales rellenas de bloques de color (rojo, azul y verde); de cada flujo parte una flecha hacia los consumidores (C y D), donde C recibe el flujo rojo y D recibe el azul y el verde, ilustrando que cada productor puede escribir en varios topics y cada consumidor puede leer de varios topics independientemente](images/productores-consumidores-intro.png)
+
+Frente al modelo clásico de cola, donde un mensaje se reparte entre consumidores y desaparece tras procesarse, Kafka emplea un modelo **publicador/suscriptor** sobre el log: el mismo mensaje puede ser leído por **varios consumidores distintos en paralelo**, en lo que conceptualmente es un *broadcast* desde el topic.
+
+![Diagrama titulado "Kafka III - Modelo publicador/subscriptor: los mensajes se difunden en broadcast" con un único topic representado como una bandeja con cuatro mensajes de colores (morado, rojo, verde y amarillo) y tres consumidores A, B y C; flechas desde el topic llevan a cada consumidor copias de los mismos mensajes, mostrando que cada consumidor recibe el flujo completo de forma independiente](images/modelo-pub-sub-broadcast.png)
+
 Diferencias con la cola tradicional, subrayadas:
 
 1. **No se elimina al leer.** Los mensajes viven mientras la retención lo permita (por tiempo, por tamaño, o forever si así se configura).
@@ -66,6 +72,10 @@ Cuatro patrones canónicos:
 - **Pipeline de ingestión.** Logs y métricas de aplicaciones se vuelcan a Kafka y de ahí van a distintos destinos (Elastic, S3, BigQuery) sin reinventar la rueda.
 - **Captura de cambios de base de datos (CDC).** Cambios en una BBDD se vuelcan como eventos para que otros sistemas se mantengan sincronizados.
 - **Event sourcing.** El log es la **fuente de verdad** del estado: el estado se reconstruye reproduciendo eventos.
+
+Alrededor del cluster Kafka acaba apareciendo un ecosistema con cuatro tipos de clientes muy diferenciados que se irán cubriendo a lo largo del bloque: **Producers** (aplicaciones que escriben eventos), **Consumers** (aplicaciones que los procesan), **Stream Processors** (componentes que leen, transforman y reescriben flujos) y **Connectors** (puentes a bases de datos y otros sistemas externos).
+
+![Diagrama radial centrado en un rectángulo "Kafka Cluster": en la parte superior, tres "App" etiquetadas como Producers escriben hacia el cluster; en la parte inferior, tres "App" etiquetadas como Consumers leen del cluster; a la derecha, dos "App" Stream Processors leen y escriben sobre el mismo cluster; a la izquierda, dos cilindros "DB" conectados al cluster a través de Connectors, ilustrando cómo Kafka actúa como hub central rodeado de productores, consumidores, procesadores de stream y conectores a sistemas externos](images/kafka-apis-ecosistema.png)
 
 ## Anatomía de un evento Kafka
 

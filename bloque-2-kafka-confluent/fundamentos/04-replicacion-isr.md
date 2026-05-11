@@ -22,6 +22,20 @@ Ejemplo intuitivo en un cluster de 3 brokers, topic con 3 particiones y RF=3:
 
 Los líderes están repartidos para que **ningún broker concentre toda la carga**.
 
+Para visualizar por qué la replicación protege frente a caídas, conviene un ejemplo más pequeño: **3 particiones y replicación 2** sobre 3 brokers. Cada partición tiene un líder en un broker y una copia (réplica) en otro:
+
+![Diagrama "Topics: Replicas III" con cabecera "TopicA — Partitiones 3 — Replicas 2" y una tabla de dos filas y tres columnas que representa lo que vive en cada uno de los tres Kafka Brokers dibujados como cilindros debajo. La primera fila muestra los líderes P0 (azul), P1 (amarillo) y P2 (verde); la segunda fila muestra las réplicas correspondientes: P2 en el broker que lleva P0, P0 en el broker que lleva P1 y P1 en el broker que lleva P2. Ilustra que con replicación 2 cada partición existe en dos brokers distintos](images/replicacion-rf2-ha.png)
+
+Si **cae un broker**, las particiones que tenía como líder pasan a ser servidas por la otra réplica, que se promociona a líder. El cluster sigue funcionando sin pérdida de datos:
+
+![Mismo diagrama "Topics: Replicas IV" con cabecera idéntica, pero con el primer broker tachado por una cruz roja sobre su cilindro y la primera columna de la tabla anulada visualmente. Las particiones que tenía P0 y P2 quedan servidas desde sus réplicas en los otros dos brokers, ahora con la etiqueta "(leader)" sobre P0 en el broker central y P2 en el broker derecho. La banda superior indica "HAY ALTA DISPONIBILIDAD"](images/replicacion-rf2-tolera-1-caida.png)
+
+Pero si **caen dos brokers a la vez** con factor de replicación 2, alguna partición queda sin ningún broker que la sirva: hay pérdida de disponibilidad parcial.
+
+![Mismo diagrama "Topics: Replicas V" pero con dos brokers tachados con grandes cruces rojas; solo queda en pie el broker de la derecha, que conserva P2 como líder y P1 como réplica, pero las particiones que solo estaban en los dos brokers caídos ya no se pueden servir. La banda superior indica "NO HAY ALTA DISPONIBILIDAD"](images/replicacion-rf2-cae-con-2-brokers.png)
+
+Regla de pulgar: con replicación N se tolera la pérdida de **N-1 brokers** sin pérdida de servicio para una partición concreta. Por eso **RF=3 es el estándar de producción**.
+
 ## Cómo se escribe (el camino de un mensaje)
 
 1. El productor descubre quién es el **líder** de la partición destino (vía metadatos del cluster).

@@ -28,6 +28,8 @@ Dos casos canónicos que conviene contrastar:
 - **Trabajo cooperativo (procesamiento horizontal).** Un solo grupo lee un topic y lo procesa con varios pods. Si se necesita más throughput, se levantan más pods (siempre que haya particiones). Es el caso por defecto para "consumir y hacer algo" en un servicio.
 - **Fan-out (varios sistemas lectores).** Cada sistema usa su propio `group.id`. Cada sistema lee **el topic completo** a su ritmo. Es lo que reemplaza a las colas de fan-out clásicas.
 
+![Diagrama de un Kafka Cluster con dos servidores (Server 1 con las particiones P0 y P3, y Server 2 con las particiones P1 y P2) que alimentan a dos consumer groups distintos sobre el mismo topic. El Consumer Group A tiene solo dos consumidores (C1 y C2) y se reparten dos particiones cada uno; el Consumer Group B tiene seis consumidores (C3 a C8) pero, al haber solo cuatro particiones, varios consumidores se quedan sin partición asignada. Ilustra cómo dos grupos leen el mismo topic con repartos completamente independientes](images/consumer-groups-reparto.png)
+
 ## Offsets: el puntero por partición
 
 El **offset** es la posición de un mensaje dentro de **su** partición. Empieza en 0 y crece monotónicamente.

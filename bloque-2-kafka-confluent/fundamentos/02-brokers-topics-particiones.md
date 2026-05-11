@@ -45,6 +45,8 @@ Cada **partición** de un topic es:
 - **Vive físicamente** en uno o varios brokers (uno *líder* y N *seguidores*).
 - Es la **unidad mínima** sobre la que se trabaja: producir, consumir, replicar.
 
+![Diagrama del Topic con tres particiones representadas como filas horizontales: la Partición 0 contiene mensajes con offsets del 01 al 10 y le entra un mensaje nuevo con offset 11; la Partición 1 contiene mensajes del 01 al 08 y le entra el 09; la Partición 2 contiene mensajes del 01 al 09 y le entra el 10. Las flechas a la derecha muestran cómo cada partición recibe el siguiente offset por separado, ilustrando que cada partición es un log independiente con su propia secuencia incremental de offsets](images/particiones-offsets-append.png)
+
 Tres ideas para fijar:
 
 1. **El orden se garantiza dentro de una partición, no entre particiones.** Si hace falta orden total entre dos eventos, deben caer en la misma partición.
@@ -106,6 +108,8 @@ A nivel físico, cada partición tiene:
 - N-1 brokers **seguidores** que replican el log del líder.
 
 Los líderes están **distribuidos** entre los brokers para balancear carga. Esto se trata a fondo en el capítulo de replicación. De momento basta con la idea: **no existe "el broker dueño del topic"**; un mismo topic tiene sus particiones repartidas.
+
+![Tres recuadros etiquetados Broker 01, Broker 02 y Broker 03. Dentro de Broker 01: la Partición 0 del Topic A y la Partición 1 del Topic B. Dentro de Broker 02: la Partición 1 del Topic A y la Partición 0 del Topic B. Dentro de Broker 03: la Partición 2 del Topic A. Ilustra cómo las particiones de dos topics distintos se reparten entre los brokers disponibles, sin que ningún broker concentre un topic entero](images/brokers-particiones-distribuidas.png)
 
 ## Cómo se ve desde la CLI
 
