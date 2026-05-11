@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: lab04
+data:
+  GREETING: "Hola desde ConfigMap"
+  LOG_LEVEL: "info"
+  app.properties: |
+    feature.flag.beta=false
+    cache.ttl.seconds=60
+    welcome.message=Bienvenido al curso
