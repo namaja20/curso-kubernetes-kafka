@@ -145,7 +145,8 @@ Connect mueve datos sin transformarlos mucho. Cuando hace falta **filtrar, agreg
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
 >

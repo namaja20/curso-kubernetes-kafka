@@ -111,7 +111,8 @@ Visto qué es un contenedor y quién lo ejecuta dentro de un nodo, la siguiente 
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)**
 >

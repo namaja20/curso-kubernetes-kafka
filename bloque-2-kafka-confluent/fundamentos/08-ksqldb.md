@@ -135,7 +135,8 @@ Recorrido el ecosistema Confluent (Schema Registry para contratos, Connect para 
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
 >

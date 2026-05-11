@@ -149,7 +149,8 @@ Falta un componente vital: quién decide quién es líder, quién entra y sale d
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 9 — Replicación y tolerancia a fallos →](../lab-09-replicacion-fallos/README.md)**
 >

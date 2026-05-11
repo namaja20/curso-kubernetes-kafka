@@ -160,7 +160,8 @@ Vista la arquitectura y dónde vive el estado, toca bajar al objeto más básico
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 3 — Diagnóstico de incidencias →](../lab-03-diagnostico/README.md)**
 >

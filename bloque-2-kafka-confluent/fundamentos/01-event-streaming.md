@@ -129,7 +129,8 @@ Vista la idea de log distribuido, la pregunta natural es cómo se reparte físic
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 5 — Flujo básico de datos →](../lab-05-flujo-basico/README.md)**
 >

@@ -156,7 +156,8 @@ Con esto se cierra la base de Kubernetes. El siguiente bloque entra en **Kafka y
 
 ---
 
-> [!TIP] Laboratorio
+> [!TIP]
+> ### Laboratorio
 >
 > **[Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
 >
