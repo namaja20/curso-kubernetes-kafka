@@ -11,7 +11,7 @@
 
 ## Calendario por sesiones (3 h)
 
-Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de calendario cada una (≈2 h 45 min de tiempo efectivo si reservas **15 min de descanso** a media sesión). Los tiempos son orientativos: usa los *retos opcionales* de cada laboratorio como buffer si el grupo va justo.
+Las **32 h** de contenido del programa se reparten en **11 sesiones** de **3 h** de calendario cada una. Con una **pausa de 15 min** a media sesión, el tiempo efectivo aproximado queda en **2 h 45 min** por encuentro. Los tiempos son orientativos; los *retos opcionales* de cada laboratorio pueden emplearse como margen si el ritmo del grupo lo exige.
 
 | Sesión | Bloque | Contenido principal |
 |:------:|--------|---------------------|
@@ -23,21 +23,21 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 6 | B2 | Lab 6 + cap. B2-03 (1ª parte) + Lab 7 |
 | 7 | B2 | Cap. B2-03 (2ª parte) + Lab 8 + cap. B2-04 + Lab 9 |
 | 8 | B2 | Lab 10 + Lab 11 + cap. B2-05 |
-| 9 | B2 | Caps. B2-06–07 + práctica SR + demo Connect |
-| 10 | B2 | Lab 12 + cap. B2-08 + demo ksqlDB |
+| 9 | B2 | Caps. B2-06–07 + práctica SR + demostración Connect |
+| 10 | B2 | Lab 12 + cap. B2-08 + demostración ksqlDB |
 | 11 | B2–B3 | Cap. B2-09 + caps. B3-01–02 + Labs 13–14 |
 
 ### Sesión 1 — Arranque y primer despliegue (B1)
 
 | Tiempo | Actividad |
 |--------|-----------|
-| 0:00 | Bienvenida, objetivos, mecánica del curso (flow teoría ↔ laboratorio) |
+| 0:00 | Introducción al curso: objetivos y mecánica (alternancia teoría ↔ laboratorio) |
 | 0:15 | [Lab 0](../bloque-1-kubernetes/lab-00-entorno/README.md) — entorno (Codespaces + kind + kubectl) |
 | 0:45 | [Cap. 01 — Contenedores vs VMs](../bloque-1-kubernetes/fundamentos/01-contenedores-vs-vms.md) |
 | 1:10 | [Cap. 02 — Runtime y CRI](../bloque-1-kubernetes/fundamentos/02-runtime-y-cri.md) |
 | 1:35 | *Descanso (15 min)* |
 | 1:50 | [Lab 1](../bloque-1-kubernetes/lab-01-despliegue/README.md) — Deployment + Service |
-| 2:45 | Cierre, dudas, vista a la sesión 2 |
+| 2:45 | Cierre, espacio para preguntas, anticipación de la sesión 2 |
 
 ### Sesión 2 — Orquestación y operación (B1)
 
@@ -48,7 +48,7 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 0:40 | [Lab 2](../bloque-1-kubernetes/lab-02-escalado-actualizaciones/README.md) — escalado, RollingUpdate, rollback |
 | 1:40 | *Descanso (15 min)* |
 | 1:55 | [Cap. 04 — Arquitectura de Kubernetes](../bloque-1-kubernetes/fundamentos/04-arquitectura-k8s.md) (1ª parte: control plane + nodos) |
-| 2:35 | Discusión y vista al Lab 3 |
+| 2:35 | Discusión guiada y anticipación del Lab 3 |
 
 ### Sesión 3 — Arquitectura y diagnóstico (B1)
 
@@ -59,7 +59,7 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 0:40 | [Lab 3](../bloque-1-kubernetes/lab-03-diagnostico/README.md) — diagnóstico (varios escenarios) |
 | 1:40 | *Descanso (15 min)* |
 | 1:55 | [Cap. 05 — Modelo de objetos y pods](../bloque-1-kubernetes/fundamentos/05-objetos-y-pods.md) (1ª parte) |
-| 2:30 | Buffer: exploración con `kubectl`, dudas |
+| 2:30 | Buffer: exploración con `kubectl` y aclaraciones |
 
 ### Sesión 4 — Configuración y cierre B1
 
@@ -80,7 +80,7 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 0:45 | [Brokers, topics y particiones](../bloque-2-kafka-confluent/fundamentos/02-brokers-topics-particiones.md) |
 | 1:30 | *Descanso (15 min)* |
 | 1:45 | [Lab 5](../bloque-2-kafka-confluent/lab-05-flujo-basico/README.md) — flujo básico (topic, produce/consume) |
-| 2:45 | Cierre y dudas |
+| 2:45 | Cierre y espacio para preguntas |
 
 ### Sesión 6 — Particiones, claves y grupos (B2)
 
@@ -121,7 +121,7 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 0:45 | Práctica guiada sobre Schema Registry (topics de sesiones anteriores) |
 | 1:40 | *Descanso (15 min)* |
 | 1:55 | [Kafka Connect](../bloque-2-kafka-confluent/fundamentos/07-kafka-connect.md) |
-| 2:40 | Demo en vivo Connect → vista al Lab 12 |
+| 2:40 | Demostración en vivo de Connect; enlace con el Lab 12 |
 
 ### Sesión 10 — Connect en práctica y ksqlDB (B2)
 
@@ -130,7 +130,7 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 0:00 | [Lab 12](../bloque-2-kafka-confluent/lab-12-kafka-connect/README.md) — Kafka Connect (JDBC → Kafka) |
 | 1:30 | *Descanso (15 min)* |
 | 1:45 | [ksqlDB](../bloque-2-kafka-confluent/fundamentos/08-ksqldb.md) |
-| 2:35 | Demo ksqlDB sobre topics del Lab 12 |
+| 2:35 | Demostración de ksqlDB sobre topics del Lab 12 |
 
 ### Sesión 11 — CFK, integración y cierre (B2–B3)
 
@@ -144,11 +144,11 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 | 2:30 | [Lab 14](../bloque-3-integracion/lab-14-pipeline-completo/README.md) — pipeline Producer → Topic → Consumer |
 | 2:55 | Cierre del curso y preguntas |
 
-### Notas de impartición
+### Notas para la planificación
 
-- **Labs densos** (2, 3 y 12): acorta con los pasos opcionales del README si el grupo va justo de tiempo.
-- **Buffer B1**: la sesión 3 incluye tiempo libre al final; la sesión 4 cierra con margen — úsalos si B1 se alarga.
-- **Stack de integración** (Java, Python, JS, etc.): solo condiciona los ejemplos de productor/consumidor en los labs de Kafka; no altera este reparto horario.
+- Los **laboratorios 2, 3 y 12** concentran la mayor carga práctica; ante restricción horaria, los pasos opcionales de cada README pueden omitirse o posponerse sin perder el hilo del curso.
+- En el **Bloque 1**, las sesiones **3** y **4** incorporan margen al final; ese tiempo puede destinarse a ampliar fundamentos o a resolver incidencias si alguna sesión anterior queda retrasada.
+- El **stack de integración** elegido para los ejemplos (Java, Python, JavaScript, etc.) condiciona únicamente los fragmentos de productor/consumidor en los laboratorios de Kafka; no modifica el reparto de sesiones ni la duración nominal de cada bloque.
 
 ## Bloque 1 — Kubernetes (12 h)
 
@@ -201,4 +201,4 @@ Las **32 h** de contenido del programa encajan en **11 sesiones** de **3 h** de 
 
 ## Resultados esperados
 
-Los resultados de aprendizaje del curso se recogen en el README principal del repositorio; cada laboratorio concreta los logros de su sesión.
+Los resultados de aprendizaje aparecen descritos en el README principal del repositorio; cada laboratorio detalla los logros asociados a su sesión.
