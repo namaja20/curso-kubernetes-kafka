@@ -10,10 +10,11 @@ Este bloque cubre los fundamentos necesarios para entender qué es Kubernetes, q
 
 ## Laboratorios del bloque
 
-Ruta práctica del programa, enlazada también al final de cada capítulo:
+Ruta práctica del programa, enlazada también al final de cada capítulo. El **Lab 0** es el preludio de instalación que prepara el entorno y se hace **una sola vez**:
 
 | # | Tema | Enlace |
 |--:|------|--------|
+| 0 | Preparar el entorno (kind + kubectl) | [`lab-00-entorno`](../lab-00-entorno/README.md) |
 | 1 | Despliegue de aplicaciones | [`lab-01-despliegue`](../lab-01-despliegue/README.md) |
 | 2 | Escalado y actualizaciones | [`lab-02-escalado-actualizaciones`](../lab-02-escalado-actualizaciones/README.md) |
 | 3 | Diagnóstico de incidencias | [`lab-03-diagnostico`](../lab-03-diagnostico/README.md) |

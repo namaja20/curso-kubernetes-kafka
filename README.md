@@ -58,7 +58,8 @@ En cada carpeta de laboratorio encontrarás la descripción del ejercicio y los 
 
 1. Haz un **fork** de este repositorio en tu cuenta de GitHub.
 2. En tu fork, abre un **Codespace**: botón *Code* → pestaña *Codespaces* → *Create codespace on main* (o la rama indicada).
-3. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
+3. Ejecuta el **[Lab 0 — Preparar el entorno (kind + kubectl)](bloque-1-kubernetes/lab-00-entorno/README.md)** para dejar el cluster local listo. **Una sola vez por Codespace.**
+4. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
 
 ---
 

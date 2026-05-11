@@ -23,6 +23,7 @@
 
 | LAB | Tema | Carpeta |
 |-----|------|---------|
+| 0 | Preparar el entorno (kind + kubectl) | `bloque-1-kubernetes/lab-00-entorno/` |
 | 1 | Despliegue de aplicaciones (Deployment, Service) | `bloque-1-kubernetes/lab-01-despliegue/` |
 | 2 | Escalado y actualizaciones (rollback) | `bloque-1-kubernetes/lab-02-escalado-actualizaciones/` |
 | 3 | Diagnóstico (logs, eventos, pods en error) | `bloque-1-kubernetes/lab-03-diagnostico/` |
