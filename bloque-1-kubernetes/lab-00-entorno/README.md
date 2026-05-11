@@ -66,22 +66,30 @@ kind version
 
 ## Paso 4 — Crear el cluster
 
-Este laboratorio incluye una configuración mínima de cluster en [`manifests/kind-cluster.yaml`](manifests/kind-cluster.yaml):
+### El manifiesto del cluster
+
+Este laboratorio incluye una configuración mínima en [`manifest/cluster/kind-cluster.yaml`](manifest/cluster/kind-cluster.yaml). Es un fichero que pertenece **a kind**, no a la API de Kubernetes: define *cómo se construye* el cluster, no objetos que vivan dentro de él.
 
 ```yaml
-kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
-name: curso
-nodes:
-  - role: control-plane
-  - role: worker
-  - role: worker
+kind: Cluster                       # tipo de recurso de kind (no de Kubernetes)
+apiVersion: kind.x-k8s.io/v1alpha4  # esquema de configuración de kind
+name: curso                         # nombre del cluster -> contexto kubectl: kind-curso
+nodes:                              # cada elemento se materializa como un contenedor Docker
+  - role: control-plane             # 1 nodo de control (apiserver, etcd, scheduler, controllers)
+  - role: worker                    # 1 worker (ejecuta pods de usuario)
+  - role: worker                    # 2 workers para poder ver scheduling entre nodos
 ```
 
-Créalo:
+Puntos a destacar:
+
+- **`name: curso`** se convierte en el contexto `kind-curso` de `kubectl`. Cambiarlo aquí cambia el contexto.
+- Tener **2 workers** (y no 1) permite observar más adelante cómo Kubernetes reparte pods entre nodos y cómo se comporta el `kube-proxy` al enrutar entre IPs de pods distintas.
+- La organización del repo agrupa todos los YAML del lab bajo `manifest/`. Para infraestructura del propio cluster usamos `manifest/cluster/`; para aplicaciones, `manifest/apps/<nombre-de-la-app>/`. Verás este patrón en todos los labs.
+
+### Crearlo
 
 ```bash
-kind create cluster --config bloque-1-kubernetes/lab-00-entorno/manifests/kind-cluster.yaml
+kind create cluster --config bloque-1-kubernetes/lab-00-entorno/manifest/cluster/kind-cluster.yaml
 ```
 
 > La primera vez kind descargará la imagen de nodo (`kindest/node:vX.YY.Z`); puede tardar varios minutos.
