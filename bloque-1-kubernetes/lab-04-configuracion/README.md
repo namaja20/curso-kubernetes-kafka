@@ -1,6 +1,8 @@
 # LAB 4 — ConfigMaps y Secrets
 
-[← Anterior: Lab 3 — Diagnóstico](../lab-03-diagnostico/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente bloque: Kafka + Confluent →](../../bloque-2-kafka-confluent/fundamentos/README.md)
+> **Has entrado aquí desde el [Capítulo 5 — Modelo de objetos y pods](../fundamentos/05-objetos-y-pods.md).** Al terminar, vuelve a ese capítulo. Es el último capítulo del bloque; tras él se cierra el Bloque 1 y arranca el Bloque 2 — Kafka + Confluent.
+
+[← Volver: Capítulo 5 — Modelo de objetos y pods](../fundamentos/05-objetos-y-pods.md) · [Índice del bloque ↑](../fundamentos/README.md)
 
 ---
 
@@ -307,6 +309,16 @@ La app arranca y ahora imprime `API_TOKEN=nuevo-token`. Patrón estándar para r
 kubectl delete namespace lab04
 ```
 
+## Vuelve a la teoría
+
+Has completado el laboratorio. Regresa al capítulo desde el que llegaste y cierra el bloque:
+
+[← Volver al **Capítulo 5 — Modelo de objetos y pods**](../fundamentos/05-objetos-y-pods.md)
+
+Al terminarlo, has completado el Bloque 1. El siguiente paso es:
+
+[Bloque 2 — Kafka + Confluent →](../../bloque-2-kafka-confluent/fundamentos/README.md)
+
 ---
 
-[← Anterior: Lab 3 — Diagnóstico](../lab-03-diagnostico/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente bloque: Kafka + Confluent →](../../bloque-2-kafka-confluent/fundamentos/README.md)
+[← Volver: Capítulo 5 — Modelo de objetos y pods](../fundamentos/05-objetos-y-pods.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente bloque: Kafka + Confluent →](../../bloque-2-kafka-confluent/fundamentos/README.md)

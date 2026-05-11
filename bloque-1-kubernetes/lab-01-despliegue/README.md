@@ -1,6 +1,8 @@
 # LAB 1 — Despliegue de aplicaciones
 
-[← Anterior: Lab 0 — Entorno](../lab-00-entorno/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)
+> **Has entrado aquí desde el [Capítulo 2 — Runtime y CRI](../fundamentos/02-runtime-y-cri.md).** Al terminar, vuelve a ese capítulo y continúa con la teoría hasta el siguiente laboratorio.
+
+[← Volver: Capítulo 2 — Runtime y CRI](../fundamentos/02-runtime-y-cri.md) · [Índice del bloque ↑](../fundamentos/README.md)
 
 ---
 
@@ -230,12 +232,22 @@ Pulsa `Ctrl+C` cuando el cluster vuelva a tener 3 pods `Running`.
 
 ## Limpieza
 
-Conserva el namespace `lab01` para el [Lab 2](../lab-02-escalado-actualizaciones/README.md), que lo reutiliza. Si quieres borrarlo:
+Conserva el namespace `lab01` para el siguiente laboratorio del bloque, que lo reutiliza. Si quieres borrarlo:
 
 ```bash
 kubectl delete namespace lab01
 ```
 
+## Vuelve a la teoría
+
+Has completado el laboratorio. Regresa al capítulo desde el que llegaste y continúa la lectura:
+
+[← Volver al **Capítulo 2 — Runtime y CRI**](../fundamentos/02-runtime-y-cri.md)
+
+Cuando lo termines, el siguiente capítulo de teoría es:
+
+[Capítulo 3 — Orquestación →](../fundamentos/03-orquestacion.md)
+
 ---
 
-[← Anterior: Lab 0 — Entorno](../lab-00-entorno/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)
+[← Volver: Capítulo 2 — Runtime y CRI](../fundamentos/02-runtime-y-cri.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente capítulo: 3 — Orquestación →](../fundamentos/03-orquestacion.md)

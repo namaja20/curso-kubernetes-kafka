@@ -1,6 +1,8 @@
 # LAB 3 — Diagnóstico de incidencias
 
-[← Anterior: Lab 2 — Escalado](../lab-02-escalado-actualizaciones/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)
+> **Has entrado aquí desde el [Capítulo 4 — Arquitectura de Kubernetes](../fundamentos/04-arquitectura-k8s.md).** Al terminar, vuelve a ese capítulo y continúa con la teoría hasta el siguiente laboratorio.
+
+[← Volver: Capítulo 4 — Arquitectura de Kubernetes](../fundamentos/04-arquitectura-k8s.md) · [Índice del bloque ↑](../fundamentos/README.md)
 
 ---
 
@@ -281,6 +283,16 @@ Tras unos segundos los pods quedan `1/1 Ready` y el Service obtiene endpoints.
 kubectl delete namespace lab03
 ```
 
+## Vuelve a la teoría
+
+Has completado el laboratorio. Regresa al capítulo desde el que llegaste y continúa la lectura:
+
+[← Volver al **Capítulo 4 — Arquitectura de Kubernetes**](../fundamentos/04-arquitectura-k8s.md)
+
+Cuando lo termines, el siguiente capítulo de teoría es:
+
+[Capítulo 5 — Modelo de objetos y pods →](../fundamentos/05-objetos-y-pods.md)
+
 ---
 
-[← Anterior: Lab 2 — Escalado](../lab-02-escalado-actualizaciones/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)
+[← Volver: Capítulo 4 — Arquitectura de Kubernetes](../fundamentos/04-arquitectura-k8s.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente capítulo: 5 — Modelo de objetos y pods →](../fundamentos/05-objetos-y-pods.md)

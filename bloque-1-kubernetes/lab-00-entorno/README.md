@@ -1,6 +1,8 @@
 # LAB 0 — Preparar el entorno (kind + kubectl)
 
-[← Índice del bloque](../fundamentos/README.md) · [Siguiente: Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)
+> **Setup previo al curso.** Este laboratorio no nace de un capítulo de teoría: se ejecuta **una sola vez** antes de empezar para dejar el cluster listo. Al terminarlo, arranca la teoría por el [Capítulo 1 — Contenedores vs VMs](../fundamentos/01-contenedores-vs-vms.md).
+
+[← README del curso](../../README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Empezar la teoría: Capítulo 1 — Contenedores vs VMs →](../fundamentos/01-contenedores-vs-vms.md)
 
 ---
 
@@ -172,8 +174,8 @@ Para volver a empezar, repite el **Paso 4**.
 
 ## Lo que viene a continuación
 
-Entorno preparado. El primer laboratorio práctico de Kubernetes despliega y expone una aplicación sobre este cluster.
+Entorno preparado. Arranca con la teoría del Bloque 1; cuando un capítulo te invoque a un laboratorio, lo encontrarás como un bloque destacado al final de ese capítulo.
 
 ---
 
-[← Índice del bloque](../fundamentos/README.md) · [Siguiente: Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)
+[← README del curso](../../README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Empezar la teoría: Capítulo 1 — Contenedores vs VMs →](../fundamentos/01-contenedores-vs-vms.md)

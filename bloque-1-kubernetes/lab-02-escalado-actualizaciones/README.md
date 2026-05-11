@@ -1,6 +1,8 @@
 # LAB 2 — Escalado y actualizaciones (con rollback)
 
-[← Anterior: Lab 1 — Despliegue](../lab-01-despliegue/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 3 — Diagnóstico →](../lab-03-diagnostico/README.md)
+> **Has entrado aquí desde el [Capítulo 3 — Orquestación](../fundamentos/03-orquestacion.md).** Al terminar, vuelve a ese capítulo y continúa con la teoría hasta el siguiente laboratorio.
+
+[← Volver: Capítulo 3 — Orquestación](../fundamentos/03-orquestacion.md) · [Índice del bloque ↑](../fundamentos/README.md)
 
 ---
 
@@ -203,8 +205,18 @@ kubectl -n lab01 get deploy web -o jsonpath='{.spec.template.spec.containers[0].
 
 ## Limpieza
 
-Mantén el namespace `lab01` si vas a continuar. El [Lab 3](../lab-03-diagnostico/README.md) trabaja en su propio namespace.
+Mantén el namespace `lab01` si vas a continuar. El siguiente laboratorio trabaja en su propio namespace.
+
+## Vuelve a la teoría
+
+Has completado el laboratorio. Regresa al capítulo desde el que llegaste y continúa la lectura:
+
+[← Volver al **Capítulo 3 — Orquestación**](../fundamentos/03-orquestacion.md)
+
+Cuando lo termines, el siguiente capítulo de teoría es:
+
+[Capítulo 4 — Arquitectura de Kubernetes →](../fundamentos/04-arquitectura-k8s.md)
 
 ---
 
-[← Anterior: Lab 1 — Despliegue](../lab-01-despliegue/README.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente: Lab 3 — Diagnóstico →](../lab-03-diagnostico/README.md)
+[← Volver: Capítulo 3 — Orquestación](../fundamentos/03-orquestacion.md) · [Índice del bloque ↑](../fundamentos/README.md) · [Siguiente capítulo: 4 — Arquitectura de Kubernetes →](../fundamentos/04-arquitectura-k8s.md)
