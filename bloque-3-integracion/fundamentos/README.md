@@ -6,6 +6,12 @@
 
 Este bloque cierra el recorrido teórico uniendo lo aprendido en los dos anteriores: cómo se materializa un cluster Confluent sobre Kubernetes y cómo se observa un pipeline real de extremo a extremo.
 
+## Laboratorios del bloque
+
+Ruta práctica del programa (labs **13–14**), enlazada también al final de cada capítulo:
+
+**[LAB 13 — Kafka en Kubernetes →](../lab-13-kafka-en-kubernetes/README.md)** · **[LAB 14 — Pipeline completo →](../lab-14-pipeline-completo/README.md)**
+
 ## Capítulos
 
 | # | Título | Archivo |

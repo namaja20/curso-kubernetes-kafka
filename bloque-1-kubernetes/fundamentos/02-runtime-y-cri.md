@@ -111,4 +111,16 @@ Visto qué es un contenedor y quién lo ejecuta dentro de un nodo, la siguiente 
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
+
+*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
+
+</div>
+
+---
+
 [← Anterior: Contenedores vs VMs](01-contenedores-vs-vms.md) · [Índice del bloque ↑](README.md) · [Siguiente: Orquestación →](03-orquestacion.md)

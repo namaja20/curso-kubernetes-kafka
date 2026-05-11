@@ -143,4 +143,16 @@ Visto cómo **garantizar el contrato** del dato, ahora la otra pieza estrella de
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
+
+*Integración declarativa; encaja con esquemas y serialización del ecosistema Confluent.*
+
+</div>
+
+---
+
 [← Anterior: KRaft](05-kraft.md) · [Índice del bloque ↑](README.md) · [Siguiente: Kafka Connect →](07-kafka-connect.md)

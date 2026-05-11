@@ -8,6 +8,12 @@ Este bloque cubre los fundamentos necesarios para entender qué es Kubernetes, q
 
 ![Una grúa portuaria carga contenedores marítimos sobre un gran buque de carga; sobre la escena aparece el logotipo de Kubernetes, evocando la idea de Kubernetes como timonel u orquestador del transporte de contenedores](images/metafora-puerto-contenedores.png)
 
+## Laboratorios del bloque
+
+Ruta práctica del programa (labs **1–4**), enlazada también al final de cada capítulo:
+
+**[LAB 1 — Despliegue →](../lab-01-despliegue/README.md)** · **[LAB 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)** · **[LAB 3 — Diagnóstico →](../lab-03-diagnostico/README.md)** · **[LAB 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
+
 ## Capítulos
 
 | # | Título | Archivo |

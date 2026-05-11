@@ -156,4 +156,18 @@ Con esto se cierra la base de Kubernetes. El siguiente bloque entra en **Kafka y
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+**Práctica del bloque 1 (en orden del programa)**
+
+**[Lab 1 — Despliegue →](../lab-01-despliegue/README.md)** · **[Lab 2 — Escalado →](../lab-02-escalado-actualizaciones/README.md)** · **[Lab 3 — Diagnóstico →](../lab-03-diagnostico/README.md)** · **[Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
+
+*Tras este capítulo es el momento idóneo para abrir el **Lab 1**; los labs 2–4 continúan la ruta práctica de Kubernetes.*
+
+</div>
+
+---
+
 [← Anterior: Arquitectura](04-arquitectura-k8s.md) · [Índice del bloque ↑](README.md) · [Siguiente: Bloque 2 — Kafka y Confluent →](../../bloque-2-kafka-confluent/fundamentos/README.md)

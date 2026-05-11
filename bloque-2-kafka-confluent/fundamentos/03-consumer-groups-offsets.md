@@ -176,4 +176,18 @@ Visto cómo leer en paralelo y cómo recordar por dónde se iba, falta la otra m
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 7 — Consumer groups y rebalanceos →**](../lab-07-consumer-groups/README.md)
+
+[**Lab 8 — Offsets (earliest / latest / reset) →**](../lab-08-offsets/README.md)
+
+*Grupos, reparto de particiones y gestión de punteros de lectura.*
+
+</div>
+
+---
+
 [← Anterior: Brokers, topics y particiones](02-brokers-topics-particiones.md) · [Índice del bloque ↑](README.md) · [Siguiente: Replicación e ISR →](04-replicacion-isr.md)

@@ -157,4 +157,16 @@ Cerrado el núcleo de Kafka (qué es, cómo se reparte, cómo se replica, cómo 
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 11 — Operación de topics →**](../lab-11-operacion-topics/README.md)
+
+*Retención, configuración a nivel de topic y operación del cluster.*
+
+</div>
+
+---
+
 [← Anterior: Replicación e ISR](04-replicacion-isr.md) · [Índice del bloque ↑](README.md) · [Siguiente: Schema Registry →](06-schema-registry.md)

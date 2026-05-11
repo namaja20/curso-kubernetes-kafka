@@ -160,4 +160,16 @@ Vista la arquitectura y dónde vive el estado, toca bajar al objeto más básico
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
+
+*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
+
+</div>
+
+---
+
 [← Anterior: Orquestación](03-orquestacion.md) · [Índice del bloque ↑](README.md) · [Siguiente: Objetos y pods →](05-objetos-y-pods.md)

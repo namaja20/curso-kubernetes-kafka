@@ -149,4 +149,18 @@ Falta un componente vital: quién decide quién es líder, quién entra y sale d
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 9 — Replicación e ISR, fallo de broker →**](../lab-09-replicacion-fallos/README.md)
+
+[**Lab 10 — Diagnóstico de lag →**](../lab-10-diagnostico-lag/README.md)
+
+*Líderes, ISR bajo carga y lectura de lag en consumer groups.*
+
+</div>
+
+---
+
 [← Anterior: Consumer groups y offsets](03-consumer-groups-offsets.md) · [Índice del bloque ↑](README.md) · [Siguiente: KRaft →](05-kraft.md)

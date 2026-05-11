@@ -136,4 +136,16 @@ Ya está el modelo físico. La siguiente pregunta es cómo coordinan varios cons
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 6 — Particiones y clave →**](../lab-06-particiones/README.md)
+
+*Enrutamiento por clave, reparto entre particiones y paralelismo.*
+
+</div>
+
+---
+
 [← Anterior: Event streaming](01-event-streaming.md) · [Índice del bloque ↑](README.md) · [Siguiente: Consumer groups y offsets →](03-consumer-groups-offsets.md)

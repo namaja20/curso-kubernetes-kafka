@@ -103,4 +103,16 @@ Visto qué es un contenedor y cómo se empaqueta con Docker, falta una pregunta 
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
+
+*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas de este bloque (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
+
+</div>
+
+---
+
 [← Índice del bloque](README.md) · [Siguiente: Runtime y CRI →](02-runtime-y-cri.md)

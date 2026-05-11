@@ -145,4 +145,16 @@ Connect mueve datos sin transformarlos mucho. Cuando hace falta **filtrar, agreg
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
+
+*El laboratorio guiado del bloque sobre integración con Connect.*
+
+</div>
+
+---
+
 [← Anterior: Schema Registry](06-schema-registry.md) · [Índice del bloque ↑](README.md) · [Siguiente: ksqlDB →](08-ksqldb.md)

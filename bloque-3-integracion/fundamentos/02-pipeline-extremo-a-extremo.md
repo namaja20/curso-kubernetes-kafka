@@ -110,4 +110,16 @@ El siguiente paso natural es **profundizar en operación avanzada**: monitorizac
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 14 — Pipeline completo Producer → Topic → Consumer →**](../lab-14-pipeline-completo/README.md)
+
+*Cierre práctico del curso: extremo a extremo sobre el montaje integrado.*
+
+</div>
+
+---
+
 [← Anterior: Kafka en Kubernetes](01-kafka-en-k8s.md) · [Índice del bloque ↑](README.md) · [Volver al inicio ↺](../../README.md)

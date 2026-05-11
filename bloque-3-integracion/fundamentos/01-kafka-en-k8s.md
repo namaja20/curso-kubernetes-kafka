@@ -145,4 +145,16 @@ Visto el modelo operativo completo, falta el ejercicio práctico: **construir y 
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 13 — Kafka en Kubernetes →**](../lab-13-kafka-en-kubernetes/README.md)
+
+*Inspección de pods, logs y reinicios en el entorno integrado.*
+
+</div>
+
+---
+
 [← Índice del bloque](README.md) · [Siguiente: Pipeline extremo a extremo →](02-pipeline-extremo-a-extremo.md)

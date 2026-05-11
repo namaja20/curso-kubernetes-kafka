@@ -64,6 +64,6 @@ En cada carpeta de laboratorio encontrarás la descripción del ejercicio y los 
 
 ## ▶ Recorrido del contenido
 
-El material teórico está pensado para leerse como un libro, en orden, con navegación `← anterior` / `siguiente →` en cada documento.
+El material teórico está pensado para leerse como un libro, en orden, con navegación `← anterior` / `siguiente →` en cada documento. Al final de cada capítulo hay un bloque **Laboratorio !!** con enlace al laboratorio del programa que encaja con ese tema (y en los índices de cada bloque, la lista completa de labs del bloque).
 
 **[Comenzar: Bloque 1 — Fundamentos de Kubernetes →](bloque-1-kubernetes/fundamentos/README.md)**

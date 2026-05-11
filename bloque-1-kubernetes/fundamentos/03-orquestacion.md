@@ -116,4 +116,16 @@ Justificada la existencia de Kubernetes y vista su función a alto nivel, toca a
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
+
+*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
+
+</div>
+
+---
+
 [← Anterior: Runtime y CRI](02-runtime-y-cri.md) · [Índice del bloque ↑](README.md) · [Siguiente: Arquitectura →](04-arquitectura-k8s.md)

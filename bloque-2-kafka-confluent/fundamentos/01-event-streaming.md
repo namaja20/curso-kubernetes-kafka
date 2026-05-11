@@ -129,4 +129,16 @@ Vista la idea de log distribuido, la pregunta natural es cómo se reparte físic
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 5 — Flujo básico de datos →**](../lab-05-flujo-basico/README.md)
+
+*Topic, producir y consumir sobre el modelo de log.*
+
+</div>
+
+---
+
 [← Índice del bloque](README.md) · [Siguiente: Brokers, topics y particiones →](02-brokers-topics-particiones.md)

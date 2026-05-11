@@ -135,4 +135,16 @@ Recorrido el ecosistema Confluent (Schema Registry para contratos, Connect para 
 
 ---
 
+<div align="center">
+
+### Laboratorio !!
+
+[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
+
+*ksqlDB no tiene laboratorio dedicado en el programa; la práctica de integración del bloque es Connect (Lab 12).*
+
+</div>
+
+---
+
 [← Anterior: Kafka Connect](07-kafka-connect.md) · [Índice del bloque ↑](README.md) · [Siguiente: Operadores y CFK →](09-operadores-cfk.md)

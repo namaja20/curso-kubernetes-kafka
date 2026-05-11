@@ -6,6 +6,12 @@
 
 Este bloque desarrolla el modelo conceptual de Apache Kafka y los componentes del ecosistema Confluent. Empieza por la idea más básica —el log distribuido— y avanza hasta los componentes de mayor nivel (Schema Registry, Connect, ksqlDB) y al modo en que se opera todo ello en Kubernetes a través de un operador.
 
+## Laboratorios del bloque
+
+Ruta práctica del programa (labs **5–12**), enlazada también al final de cada capítulo:
+
+**[LAB 5 — Flujo básico →](../lab-05-flujo-basico/README.md)** · **[LAB 6 — Particiones →](../lab-06-particiones/README.md)** · **[LAB 7 — Consumer groups →](../lab-07-consumer-groups/README.md)** · **[LAB 8 — Offsets →](../lab-08-offsets/README.md)** · **[LAB 9 — Replicación y fallos →](../lab-09-replicacion-fallos/README.md)** · **[LAB 10 — Diagnóstico de lag →](../lab-10-diagnostico-lag/README.md)** · **[LAB 11 — Operación de topics →](../lab-11-operacion-topics/README.md)** · **[LAB 12 — Kafka Connect →](../lab-12-kafka-connect/README.md)**
+
 ## Capítulos
 
 | # | Título | Archivo |
