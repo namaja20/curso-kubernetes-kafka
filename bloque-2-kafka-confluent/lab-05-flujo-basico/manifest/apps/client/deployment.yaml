@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-client-config
+  namespace: app-a
+data:
+  client.properties: |
+    bootstrap.servers=kafka.kafka.svc.cluster.local:9092
+    security.protocol=PLAINTEXT
+    client.id=app-a-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-cli
+  namespace: app-a
+  labels:
+    app: kafka-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-cli
+  template:
+    metadata:
+      labels:
+        app: kafka-cli
+    spec:
+      containers:
+        - name: cli
+          image: confluentinc/cp-kafka:7.7.1
+          command: ["sleep", "infinity"]
+          env:
+            - name: KAFKA_BOOTSTRAP
+              value: "kafka.kafka.svc.cluster.local:9092"
+          volumeMounts:
+            - name: config
+              mountPath: /etc/kafka-client
+              readOnly: true
+          resources:
+            requests: { cpu: 25m, memory: 64Mi }
+            limits:   { cpu: 200m, memory: 256Mi }
+      volumes:
+        - name: config
+          configMap:
+            name: kafka-client-config
