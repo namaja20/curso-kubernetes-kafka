@@ -1,20 +1,14 @@
-# Tema 3 — Consumer groups y offsets
+# Consumer groups y offsets
 
-[← Anterior: Tema 2 — Brokers, topics y particiones](02-brokers-topics-particiones.md) · [Índice del bloque ↑](README.md) · [Siguiente: Tema 4 — Replicación e ISR →](04-replicacion-isr.md)
+[← Anterior: Brokers, topics y particiones](02-brokers-topics-particiones.md) · [Índice del bloque ↑](README.md) · [Siguiente: Replicación e ISR →](04-replicacion-isr.md)
 
 ---
 
-## Para qué este tema
+## En síntesis
 
-Explicar **cómo lee Kafka** en serio: cómo se reparten los consumidores entre las particiones de un topic, cómo recuerdan por dónde iban, qué es un rebalanceo y de dónde sale el famoso **lag**. Es el tema donde más se cocina la operación diaria de Kafka.
+Varios consumidores pueden colaborar formando un **consumer group**. Kafka **reparte las particiones del topic entre los miembros del grupo**: cada partición la lee **uno y solo uno** del grupo. Cada grupo lleva su **propio offset** (su puntero de lectura) por partición. Otros grupos leen el mismo topic en paralelo con su propio offset. Si cambia la composición del grupo (alguien entra, alguien se cae), se produce un **rebalanceo**: se redistribuyen las particiones. La distancia entre la última posición escrita y la última leída por el grupo se llama **lag**.
 
-## Idea clave en 30 segundos
-
-> Varios consumidores pueden colaborar formando un **consumer group**. Kafka **reparte las particiones del topic entre los miembros del grupo**: cada partición la lee **uno y solo uno** del grupo. Cada grupo lleva su **propio offset** (su puntero de lectura) por partición. Otros grupos leen el mismo topic en paralelo con su propio offset. Si cambia la composición del grupo (alguien entra, alguien se cae), se produce un **rebalanceo**: se redistribuyen las particiones. La distancia entre la última posición escrita y la última leída por el grupo se llama **lag**.
-
-## Desarrollo
-
-### 1. ¿Qué es un consumer group?
+## ¿Qué es un consumer group?
 
 Un **consumer group** es un nombre lógico (`group.id`) compartido por **varios procesos consumidores** que quieren cooperar para leer un mismo conjunto de topics.
 
@@ -25,16 +19,16 @@ Reglas básicas:
 - Si el grupo tiene **más consumidores que particiones**, los que sobran **están ociosos**.
 - Distintos grupos sobre el mismo topic son **independientes**: cada uno con su propio reparto y su propio offset.
 
-> **Talking point:** *"El consumer group es la respuesta de Kafka a 'quiero escalar el procesamiento sin perder orden'. Repartes particiones, cada consumidor procesa lo suyo, el orden se mantiene dentro de cada partición."*
+El consumer group es la respuesta de Kafka a *"quiero escalar el procesamiento sin perder orden"*: se reparten particiones, cada consumidor procesa lo suyo, el orden se mantiene dentro de cada partición.
 
-### 2. Patrones típicos de uso
+## Patrones típicos de uso
 
 Dos casos canónicos que conviene contrastar:
 
-- **Trabajo cooperativo (procesamiento horizontal).** Un solo grupo lee un topic y lo procesa con varios pods. Si necesitas más throughput, levantas más pods (siempre que tengas particiones). Es el caso por defecto para "consumir y hacer algo" en un servicio.
+- **Trabajo cooperativo (procesamiento horizontal).** Un solo grupo lee un topic y lo procesa con varios pods. Si se necesita más throughput, se levantan más pods (siempre que haya particiones). Es el caso por defecto para "consumir y hacer algo" en un servicio.
 - **Fan-out (varios sistemas lectores).** Cada sistema usa su propio `group.id`. Cada sistema lee **el topic completo** a su ritmo. Es lo que reemplaza a las colas de fan-out clásicas.
 
-### 3. Offsets: el puntero por partición
+## Offsets: el puntero por partición
 
 El **offset** es la posición de un mensaje dentro de **su** partición. Empieza en 0 y crece monotónicamente.
 
@@ -50,9 +44,9 @@ El **lag** es:
 lag = LEO − committed offset
 ```
 
-…por partición. El lag total del grupo es la suma. Si crece sostenidamente, no puedes procesar al ritmo que se produce. Si oscila pero vuelve a 0, va bien.
+…por partición. El lag total del grupo es la suma. Si crece sostenidamente, no se procesa al ritmo que se produce. Si oscila pero vuelve a 0, va bien.
 
-### 4. ¿Dónde se guardan los offsets?
+## ¿Dónde se guardan los offsets?
 
 En versiones antiguas se guardaban en ZooKeeper. **En Kafka moderno se guardan en un topic interno de Kafka:** `__consumer_offsets`. Esto tiene varias ventajas:
 
@@ -60,20 +54,20 @@ En versiones antiguas se guardaban en ZooKeeper. **En Kafka moderno se guardan e
 - El propio cluster Kafka es la fuente de verdad; no hay sistema externo que mantener.
 - Permite ver el estado con las mismas herramientas.
 
-Cuando un consumidor "commit-ea", lo que hace internamente es **escribir un mensaje** en `__consumer_offsets` que dice *"grupo G, topic T, partición P, offset N"*.
+Cuando un consumidor "commit-ea", lo que hace internamente es **escribir un mensaje** en `__consumer_offsets` que dice *“grupo G, topic T, partición P, offset N”*.
 
-### 5. Cuándo se hace commit: el matiz importante
+## Cuándo se hace commit: el matiz importante
 
 Hay dos modos:
 
-- **Auto-commit** (`enable.auto.commit=true`, por defecto en muchos clientes): el cliente commit-ea cada cierto tiempo en segundo plano. **Cómodo, pero peligroso**: si tu procesamiento falla justo después del commit, te perderás mensajes (commit antes de procesar = "at-most-once").
-- **Manual commit**: el código decide cuándo. Lo habitual es **procesar primero y luego commitear**, garantizando "at-least-once" (puedes reprocesar un mensaje si te caes, pero no perderlo).
+- **Auto-commit** (`enable.auto.commit=true`, por defecto en muchos clientes): el cliente commit-ea cada cierto tiempo en segundo plano. Cómodo pero peligroso: si el procesamiento falla justo después del commit, se perderán mensajes (commit antes de procesar = "at-most-once").
+- **Manual commit**: el código decide cuándo. Lo habitual es **procesar primero y luego commitear**, garantizando "at-least-once" (puede reprocesarse un mensaje si el consumidor cae, pero no perderlo).
 
-> **Talking point:** *"El modo por defecto suele ser auto-commit. En producción, casi todo el mundo lo desactiva. En los laboratorios lo veremos explícitamente."*
+El modo por defecto suele ser auto-commit. En producción, casi todo el mundo lo desactiva.
 
-Para garantías más estrictas (exactly-once), Kafka tiene **transacciones**, que en este curso solo mencionaremos.
+Para garantías más estrictas (exactly-once), Kafka tiene **transacciones**, mencionables aquí únicamente como concepto.
 
-### 6. Reset de offsets: earliest, latest y específico
+## Reset de offsets: earliest, latest y específico
 
 Cuando un consumer group **arranca por primera vez** (o pierde su offset), tiene que decidir desde dónde empezar:
 
@@ -89,9 +83,7 @@ kafka-consumer-groups --bootstrap-server ... \
   --reset-offsets --to-earliest --execute
 ```
 
-> **Conexión con LAB 8:** el lab está dedicado precisamente a esto: probar earliest/latest y reset controlado.
-
-### 7. Rebalanceo: el momento que más duele
+## Rebalanceo: el momento que más duele
 
 Un **rebalanceo** ocurre cuando cambia la composición del grupo o de los topics:
 
@@ -100,18 +92,18 @@ Un **rebalanceo** ocurre cuando cambia la composición del grupo o de los topics
 - Cambia el **número de particiones** del topic.
 - Cambia el **subscription set** (qué topics consume el grupo).
 
-Durante el rebalanceo, **el grupo deja de consumir** mientras se redistribuyen particiones. En grupos grandes esto puede durar segundos o más, y aparece **picos de lag**.
+Durante el rebalanceo, **el grupo deja de consumir** mientras se redistribuyen particiones. En grupos grandes esto puede durar segundos o más, y aparecen **picos de lag**.
 
 Estrategias de asignación (configurables):
 
 - **Range / RoundRobin** — clásicas, fáciles de entender, "stop the world".
 - **Sticky / Cooperative Sticky** — minimizan los movimientos: la mayor parte del grupo mantiene sus particiones; solo se mueven las necesarias. Es la opción **recomendada actualmente**.
 
-> **Talking point:** *"Un rebalanceo no es un error: es parte de la vida del consumidor. Lo grave es **cuándo** y **cuánto** tardan. Por eso conviene la estrategia cooperativa, heartbeats y `max.poll.interval.ms` bien ajustados."*
+Un rebalanceo no es un error: es parte de la vida del consumidor. Lo grave es **cuándo** y **cuánto** tardan. Por eso conviene la estrategia cooperativa, heartbeats y `max.poll.interval.ms` bien ajustados.
 
-### 8. Lag: el indicador operativo nº 1
+## Lag: el indicador operativo nº 1
 
-El lag responde a una pregunta de negocio: *"¿estamos al día?"*
+El lag responde a una pregunta de negocio: *¿se está al día?*
 
 Si el lag de un grupo crece y no se recupera:
 
@@ -120,7 +112,7 @@ Si el lag de un grupo crece y no se recupera:
 - El consumidor está fallando y reintentando.
 - Hay un cuello de botella aguas abajo (BBDD, API externa).
 
-Lo veremos en el **LAB 10** como ejercicio de diagnóstico. La regla mental:
+La regla mental:
 
 ```
 lag plano  ≈ todo bien
@@ -128,14 +120,14 @@ lag oscilante  ≈ carga variable, normal
 lag creciente  ≈ algo va mal
 ```
 
-### 9. Comandos de bolsillo
+## Comandos de bolsillo
 
 ```bash
 kafka-consumer-groups --bootstrap-server ... --list
 kafka-consumer-groups --bootstrap-server ... --describe --group mi-grupo
 ```
 
-Ese último es el comando estrella del bloque: muestra para cada partición su líder, su offset committed, el LEO y el lag. Es el "kubectl get pods" del operador de Kafka.
+Ese último es el comando estrella del operador de Kafka: muestra para cada partición su líder, su offset committed, el LEO y el lag. Es el "kubectl get pods" del mundo Kafka.
 
 ## Diagrama: reparto de particiones entre consumidores de un grupo
 
@@ -168,18 +160,18 @@ flowchart LR
 
 > Cada grupo lleva su propio reparto y su propio offset. A1 y A2 cooperan; B1 lee solo y lleva todo el peso de su grupo.
 
-## Errores típicos y preguntas frecuentes
+## Preguntas frecuentes
 
-- **"¿Si añado un consumidor al grupo, automáticamente leo más rápido?"** Solo si tienes **particiones libres** que asignarle. Con un topic de 4 particiones, el quinto consumidor del grupo queda ocioso.
-- **"¿Si dos servicios usan el mismo `group.id` se pisan?"** Sí. Comparten reparto y offsets. Si son procesos del mismo servicio, está bien. Si son cosas distintas, **cada uno con su `group.id`**.
-- **"Tengo lag enorme al arrancar, ¿está mal?"** Probablemente arrancaste el grupo con `earliest` y está procesando histórico. No es un fallo: el lag se irá comiendo.
-- **"¿Por qué mi consumidor se cae y dispara rebalanceos?"** Suele ser `max.poll.interval.ms`: el consumidor tarda más en procesar un lote del que Kafka permite, y el broker lo expulsa.
-- **"¿Si reinicio el consumidor pierdo los datos?"** No, si haces commit correctamente. El offset queda en `__consumer_offsets` y al volver retomas justo donde quedaste.
+- **Si se añade un consumidor al grupo, ¿se lee más rápido?** Solo si hay **particiones libres** que asignarle. Con un topic de 4 particiones, el quinto consumidor del grupo queda ocioso.
+- **¿Si dos servicios usan el mismo `group.id` se pisan?** Sí. Comparten reparto y offsets. Si son procesos del mismo servicio, está bien. Si son cosas distintas, **cada uno con su `group.id`**.
+- **Lag enorme al arrancar, ¿está mal?** Probablemente el grupo arrancó con `earliest` y está procesando histórico. No es un fallo: el lag se irá comiendo.
+- **¿Por qué un consumidor se cae y dispara rebalanceos?** Suele ser `max.poll.interval.ms`: el consumidor tarda más en procesar un lote del que Kafka permite, y el broker lo expulsa.
+- **¿Reiniciar el consumidor pierde datos?** No, si se hace commit correctamente. El offset queda en `__consumer_offsets` y al volver se retoma justo donde quedó.
 
-## Puente al siguiente tema
+## Lo que viene a continuación
 
-Hemos visto cómo leer en paralelo y cómo recordar por dónde íbamos. Falta la otra mitad de la robustez de Kafka: **¿qué pasa si un broker se cae?** Eso lo cubre el siguiente tema: **replicación e ISR**.
+Visto cómo leer en paralelo y cómo recordar por dónde se iba, falta la otra mitad de la robustez de Kafka: qué pasa si un broker se cae. Eso lo cubre **replicación e ISR**.
 
 ---
 
-[← Anterior: Tema 2 — Brokers, topics y particiones](02-brokers-topics-particiones.md) · [Índice del bloque ↑](README.md) · [Siguiente: Tema 4 — Replicación e ISR →](04-replicacion-isr.md)
+[← Anterior: Brokers, topics y particiones](02-brokers-topics-particiones.md) · [Índice del bloque ↑](README.md) · [Siguiente: Replicación e ISR →](04-replicacion-isr.md)

@@ -34,9 +34,9 @@ El detalle por temas, laboratorios y rutas en el repositorio está en **[Program
 ## Metodología (cómo se imparte el curso)
 
 - **Base conceptual:** antes de cada práctica se introduce el vocabulario y las ideas necesarias, de forma breve y enlazada al ejercicio.
-- **Ejemplos en el repositorio:** dispondrás de manifiestos, scripts y aplicaciones de referencia ya preparados para ilustrar el comportamiento del sistema; el docente los utilizará para explicar el flujo sobre material común a todo el grupo.
+- **Ejemplos en el repositorio:** dispondrás de manifiestos, scripts y aplicaciones de referencia ya preparados para ilustrar el comportamiento del sistema y servir de base común durante las explicaciones.
 - **Laboratorios guiados:** el grueso del aprendizaje es práctico. Cada laboratorio incluye objetivos claros, pasos ordenados, comprobaciones de que el resultado es el esperado y, en muchos casos, pequeños retos para consolidar lo aprendido.
-- **Trabajo en entorno unificado:** las prácticas se realizan en **GitHub Codespaces** a partir de **tu fork** del repositorio, con las herramientas de línea de comandos y el acceso al entorno de clúster que indique el curso. No es necesario instalar software en tu equipo personal para seguir el curso.
+- **Trabajo en entorno unificado:** las prácticas se realizan en **GitHub Codespaces** a partir de **tu fork** del repositorio, con las herramientas de línea de comandos y el acceso al entorno de clúster que se indique. No es necesario instalar software en tu equipo personal para seguir el curso.
 
 ---
 
@@ -50,14 +50,14 @@ El detalle por temas, laboratorios y rutas en el repositorio está en **[Program
 | `bloque-3-integracion/` | Laboratorios 13–14 |
 | `entorno-local/` | Scripts y definiciones de apoyo para el entorno de prácticas (según el diseño del laboratorio) |
 
-En cada carpeta de laboratorio encontrarás la descripción del ejercicio; el guion paso a paso completo se irá publicando en los archivos indicados por el docente (por ejemplo guías en Markdown dentro de la misma carpeta).
+En cada carpeta de laboratorio encontrarás la descripción del ejercicio y los archivos de guion paso a paso (típicamente, guías en Markdown dentro de la misma carpeta).
 
 ---
 
 ## Cómo empezar
 
 1. Haz un **fork** de este repositorio en tu cuenta de GitHub.
-2. En tu fork, abre un **Codespace**: botón *Code* → pestaña *Codespaces* → *Create codespace on main* (o la rama que indique el docente).
+2. En tu fork, abre un **Codespace**: botón *Code* → pestaña *Codespaces* → *Create codespace on main* (o la rama indicada).
 3. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
 
 ---
