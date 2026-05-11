@@ -59,3 +59,11 @@ En cada carpeta de laboratorio encontrarás la descripción del ejercicio; el gu
 1. Haz un **fork** de este repositorio en tu cuenta de GitHub.
 2. En tu fork, abre un **Codespace**: botón *Code* → pestaña *Codespaces* → *Create codespace on main* (o la rama que indique el docente).
 3. Sigue el orden de bloques y laboratorios del [programa](docs/00-programa.md).
+
+---
+
+## ▶ Recorrido del contenido
+
+El material teórico está pensado para leerse como un libro, en orden, con navegación `← anterior` / `siguiente →` en cada documento.
+
+**[Comenzar: Bloque 1 — Fundamentos de Kubernetes →](bloque-1-kubernetes/fundamentos/README.md)**

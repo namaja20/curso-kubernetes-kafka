@@ -1,0 +1,173 @@
+# Tema 4 — Arquitectura de Kubernetes: control plane, nodos y ciclo de vida del pod
+
+[← Anterior: Tema 3 — Orquestación](03-orquestacion.md) · [Índice del bloque ↑](README.md) · [Siguiente: Tema 5 — Objetos y pods →](05-objetos-y-pods.md)
+
+---
+
+## Para qué este tema
+
+Que cada participante pueda dibujar en una pizarra (o, al menos, narrar) **qué pieza hace qué** dentro de un clúster Kubernetes y **qué le pasa a un pod** desde que lo creamos hasta que termina. Es la base para diagnosticar el LAB 3 y, más adelante, todo el bloque de Kafka.
+
+## Idea clave en 30 segundos
+
+> Un clúster tiene **dos tipos de máquinas**: las del **control plane** (el "cerebro": API, base de datos del estado, planificación, controladores) y los **nodos worker** (las máquinas que realmente ejecutan los contenedores). El estado deseado vive en una base de datos llamada **etcd**, el **API server** es el único que la toca, y a su alrededor hay piezas que reaccionan a cambios. En el nodo, un **kubelet** habla con el runtime de contenedores y un **kube-proxy** se ocupa de que el tráfico llegue a los pods correctos.
+
+## Desarrollo
+
+### 1. Las dos capas
+
+Visualmente conviene partir el dibujo en dos:
+
+- **Control plane** — *el cerebro*. Toma decisiones, guarda el estado, expone la API.
+- **Plano de datos (nodos)** — *los músculos*. Ejecutan los contenedores reales.
+
+En producción, el control plane suele estar replicado en **3 nodos** dedicados (alta disponibilidad), separado de los workers. En clústeres pequeños puede convivir.
+
+Antes de entrar en detalle de cada pieza, conviene fijar la **jerarquía visual** del cluster: dentro del *cluster* hay *nodos*, dentro de cada nodo hay *pods*, y dentro de cada pod hay *contenedores*. Cada concepto siguiente que veamos cae siempre en uno de estos niveles.
+
+![Jerarquía visual de Kubernetes: un rectángulo grande etiquetado 'Cluster' contiene dos rectángulos 'Node'; dentro de cada Node hay dos rectángulos 'Pod' y dentro de cada Pod hay uno o dos rectángulos pequeños etiquetados 'Container'](images/cluster-node-pod-jerarquia.png)
+
+![Esquema clásico de Kubernetes con Master Node (Control Manager, Scheduler, API Server y ETCD) a la izquierda y Worker Node (Kubelet, Kube DNS, contenedores con Pods, Kube Proxy y CNI) a la derecha, con una flecha entre API Server y Kubelet indicando la comunicación de control](images/arquitectura-master-worker.png)
+
+> Nota: este esquema, muy extendido, todavía dibuja **"Docker"** como motor de contenedores dentro del Worker. Como vimos en el [tema 2](02-runtime-y-cri.md), en Kubernetes moderno ese hueco lo ocupa **containerd** (u otro runtime CRI). Las piezas que rodean (kubelet, kube-proxy, CNI) son idénticas.
+
+### 2. Piezas del control plane
+
+| Componente | Qué hace | Si se cae... |
+|------------|----------|--------------|
+| **kube-apiserver** | Único punto de entrada al clúster. Recibe peticiones (humanos, controladores, kubelets) y las valida. Es el único que escribe en etcd. | El clúster sigue ejecutando lo que ya estaba, pero no admite cambios. |
+| **etcd** | Base de datos clave-valor donde se guarda **todo** el estado deseado y observado. Es la **fuente única de verdad**. | El clúster pierde su memoria. Backups de etcd son críticos. |
+| **kube-scheduler** | Decide **en qué nodo** debe correr cada pod nuevo. Mira recursos disponibles, restricciones, afinidades. | Los pods nuevos quedan en `Pending` hasta que vuelva. |
+| **kube-controller-manager** | Conjunto de controladores que ejecutan el bucle de reconciliación (ReplicaSet, Node, Endpoint, ServiceAccount, etc.). | El clúster deja de auto-repararse y de reconciliar. |
+| **cloud-controller-manager** (opcional, solo en cloud) | Integra el clúster con el cloud provider (LoadBalancers, volúmenes, rutas). | Las integraciones nativas con cloud dejan de funcionar. |
+
+> **Talking point para reforzar:** *"El API server es el centro de gravedad. Cualquier cosa que pase en Kubernetes pasa porque alguien le habló al API server."*
+
+### 3. Piezas del nodo worker
+
+| Componente | Qué hace |
+|------------|----------|
+| **kubelet** | Agente local del nodo. Pregunta al API server *"¿qué pods me toca correr?"* y se los pide al runtime vía CRI. Informa del estado de cada pod. Ejecuta las *liveness/readiness probes*. |
+| **Runtime de contenedores** (containerd) | Crea y mantiene los contenedores. (Tema 2.) |
+| **kube-proxy** | Configura las reglas de red del nodo (iptables o IPVS) para que el tráfico hacia un **Service** llegue a alguno de los pods que lo respaldan. |
+| **CNI plugin** (Calico, Cilium, Flannel, etc.) | Asigna red al pod cuando arranca y mantiene la conectividad entre pods de distintos nodos. |
+
+### 4. El recorrido completo: ¿qué pasa cuando aplico un manifiesto?
+
+Es la historia que más ayuda a fijar la arquitectura. Pintada como una **secuencia**:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant User as Operador (kubectl)
+    participant API as kube-apiserver
+    participant Etcd as etcd
+    participant Ctrl as Controller manager
+    participant Sched as Scheduler
+    participant Kubelet as kubelet (Nodo X)
+    participant CRI as containerd
+    participant Pod as Pod corriendo
+
+    User->>API: kubectl apply -f deployment.yaml
+    API->>Etcd: Persiste objeto Deployment
+    Ctrl->>API: Observa nuevo Deployment
+    Ctrl->>API: Crea ReplicaSet y Pods (en Pending)
+    API->>Etcd: Persiste los Pods
+    Sched->>API: Ve pods Pending sin nodo
+    Sched->>API: Asigna nodeName=NodoX
+    Kubelet->>API: "¿Qué pods me tocan ahora?"
+    Kubelet->>CRI: Crea sandbox + arranca contenedores
+    CRI->>Pod: Proceso corriendo
+    Kubelet->>API: Reporta status=Running
+```
+
+Cuatro ideas para subrayar después del diagrama:
+
+1. **Nadie llama directamente al kubelet.** El kubelet es quien pregunta al API server. Es un patrón "pull": resistente a particiones de red.
+2. **Pasar por etcd es lo que da consistencia.** Si el clúster reinicia, el estado vuelve porque vive en etcd, no en RAM.
+3. **Los controladores y el scheduler son clientes del API**, exactamente igual que `kubectl`. La API es el bus central.
+4. **El pod no "salta" entre nodos.** Si un nodo cae, el controlador crea un pod **nuevo** en otro nodo. Mismo manifiesto, pod distinto (IP nueva, identidad nueva).
+
+### 5. Ciclo de vida del pod
+
+Un pod recorre estados claros que conviene memorizar (aparecen en cada diagnóstico):
+
+| Estado | Significado |
+|--------|-------------|
+| **Pending** | El pod existe en etcd pero todavía no corre. Causas habituales: scheduler no encuentra nodo, imagen tardando en descargarse, falta de recursos, volumen no disponible. |
+| **Running** | Al menos un contenedor del pod ha arrancado. |
+| **Succeeded** | Todos los contenedores terminaron sin error y no se reiniciarán (típico de pods de tipo *job/batch*). |
+| **Failed** | Todos los contenedores terminaron, alguno con código distinto de cero, y no se reiniciarán. |
+| **Unknown** | El nodo no responde y el API server no sabe en qué estado está. |
+
+Además, dentro del estado del contenedor (`kubectl describe pod`) aparecen "razones" útiles:
+
+- `ContainerCreating` — el kubelet está creando el contenedor (descarga, montaje de volúmenes).
+- `CrashLoopBackOff` — el contenedor arranca y muere repetidamente; Kubernetes espera tiempos crecientes entre reintentos.
+- `ImagePullBackOff` — la imagen no se puede descargar (credenciales, nombre erróneo, registro caído).
+- `OOMKilled` — el contenedor superó su límite de memoria y el kernel lo mató.
+- `Completed` — el proceso terminó con éxito.
+
+> **Conexión con LAB 3:** estos estados son exactamente los que los participantes diagnosticarán en el laboratorio de diagnóstico. Tener la lista clara aquí evita que el lab se convierta en *adivinar*.
+
+### 6. Probes: cómo Kubernetes sabe si tu app está viva
+
+Los pods no se reinician "porque sí". Es el **kubelet**, basándose en *probes* que tú declaras, quien decide.
+
+- **liveness probe** — *"¿sigues vivo?"*. Si falla repetidamente, el contenedor se reinicia.
+- **readiness probe** — *"¿puedes recibir tráfico?"*. Si falla, el Service deja de enviarle tráfico pero **no** lo reinicia.
+- **startup probe** — *"¿has terminado de arrancar?"*. Útil para apps lentas; mientras esté en marcha, las otras dos se desactivan.
+
+Una app sin probes correctas es la causa más frecuente de incidentes "raros" en Kubernetes: o no se reinicia cuando debe, o se reinicia cuando no debe, o recibe tráfico antes de estar lista.
+
+## Diagrama de arquitectura
+
+```mermaid
+flowchart TB
+    user["Operador / pipeline (kubectl)"]
+    subgraph cp["Control plane"]
+        api["kube-apiserver"]
+        etcd[("etcd")]
+        sched["scheduler"]
+        ctrl["controller-manager"]
+    end
+    subgraph n1["Worker Node 1"]
+        k1["kubelet"]
+        p1["kube-proxy"]
+        ctd1["containerd"]
+        pod1["Pod A"]
+        pod2["Pod B"]
+    end
+    subgraph n2["Worker Node 2"]
+        k2["kubelet"]
+        p2["kube-proxy"]
+        ctd2["containerd"]
+        pod3["Pod C"]
+    end
+
+    user --> api
+    api <--> etcd
+    sched <--> api
+    ctrl <--> api
+    k1 <--> api
+    k2 <--> api
+    k1 --> ctd1 --> pod1
+    ctd1 --> pod2
+    k2 --> ctd2 --> pod3
+```
+
+## Errores típicos y preguntas frecuentes
+
+- **"¿etcd es como una base de datos cualquiera?"** Es clave-valor, distribuida y altamente consistente (usa Raft). No se usa como BBDD de la aplicación: solo guarda el estado del clúster.
+- **"¿El scheduler puede mover pods en caliente?"** No los mueve: los pods no se reubican una vez arrancados (salvo casos avanzados con *descheduler*). Si un nodo cae, los controladores **crean nuevos** pods en otros nodos.
+- **"¿Qué pasa si el control plane cae entero?"** Las aplicaciones que ya estaban corriendo siguen corriendo (el kubelet ejecuta lo que tiene). No se pueden hacer cambios y la auto-reparación queda en pausa.
+- **"¿Cuántos masters necesito?"** Producción: **3 o 5** (impar, para tener quórum en etcd). Lab/desarrollo: 1 basta.
+- **"¿Por qué mi pod está en Pending para siempre?"** Casi siempre: falta de CPU/memoria en nodos, taints/tolerations mal configurados, o `PersistentVolumeClaim` que no encuentra `PersistentVolume`. `kubectl describe pod` lo dice en `Events`.
+
+## Puente al siguiente tema
+
+Hemos visto **quién** ejecuta y **dónde** vive el estado. Ahora bajamos al objeto más básico que el operador escribe en YAML: **el pod**, y de paso introducimos qué significa "objeto declarativo" en Kubernetes.
+
+---
+
+[← Anterior: Tema 3 — Orquestación](03-orquestacion.md) · [Índice del bloque ↑](README.md) · [Siguiente: Tema 5 — Objetos y pods →](05-objetos-y-pods.md)
