@@ -136,15 +136,19 @@ Ya está el modelo físico. La siguiente pregunta es cómo coordinan varios cons
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 6 — Particiones y clave →**](../lab-06-particiones/README.md)
-
-*Enrutamiento por clave, reparto entre particiones y paralelismo.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 6 — Particiones y distribución →](../lab-06-particiones/README.md)**
+>
+> **Descripción.** Ver cómo se reparten físicamente los mensajes entre las particiones de un topic y qué efecto tiene la clave del mensaje.
+>
+> **Objetivos**
+> - Crear un topic con varias particiones.
+> - Enviar mensajes **con clave** y **sin clave** y comparar el reparto.
+> - Constatar el orden garantizado dentro de cada partición.
+>
+> **Encaja con este capítulo** porque toca de manera directa los tres conceptos centrales recién vistos: **broker** (qué pod tiene cada partición), **topic** (nombre lógico) y **partición** (unidad real de orden y paralelismo).
 
 ---
 

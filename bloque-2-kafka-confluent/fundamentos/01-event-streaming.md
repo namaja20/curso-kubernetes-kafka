@@ -129,15 +129,19 @@ Vista la idea de log distribuido, la pregunta natural es cómo se reparte físic
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 5 — Flujo básico de datos →**](../lab-05-flujo-basico/README.md)
-
-*Topic, producir y consumir sobre el modelo de log.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 5 — Flujo básico de datos →](../lab-05-flujo-basico/README.md)**
+>
+> **Descripción.** Primer contacto práctico con Kafka como log distribuido: crear un topic, escribir mensajes y leerlos.
+>
+> **Objetivos**
+> - Crear un topic.
+> - Producir mensajes y consumirlos.
+> - Observar la persistencia y el orden de los mensajes.
+>
+> **Encaja con este capítulo** porque pone en práctica el modelo conceptual recién presentado: log append-only, productores que no conocen a los consumidores y lectura por puntero.
 
 ---
 

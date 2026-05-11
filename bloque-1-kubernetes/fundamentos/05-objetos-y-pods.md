@@ -156,17 +156,19 @@ Con esto se cierra la base de Kubernetes. El siguiente bloque entra en **Kafka y
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-**Práctica del bloque 1 (en orden del programa)**
-
-**[Lab 1 — Despliegue →](../lab-01-despliegue/README.md)** · **[Lab 2 — Escalado →](../lab-02-escalado-actualizaciones/README.md)** · **[Lab 3 — Diagnóstico →](../lab-03-diagnostico/README.md)** · **[Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
-
-*Tras este capítulo es el momento idóneo para abrir el **Lab 1**; los labs 2–4 continúan la ruta práctica de Kubernetes.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
+>
+> **Descripción.** Externalizar la configuración de una aplicación (parámetros y credenciales) fuera de la imagen, usando los objetos declarativos vistos en este capítulo.
+>
+> **Objetivos**
+> - Crear y montar un ConfigMap como variables o ficheros en el pod.
+> - Crear y consumir un Secret sin exponer su contenido en el manifiesto.
+> - Verificar que el cambio de configuración no obliga a reconstruir la imagen.
+>
+> **Encaja con este capítulo** porque ConfigMap y Secret son **objetos** del mismo modelo declarativo (`apiVersion`, `kind`, `metadata`, `spec`) y se asocian a un Pod por referencia, completando el catálogo básico de recursos del bloque.
 
 ---
 

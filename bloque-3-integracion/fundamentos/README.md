@@ -8,9 +8,12 @@ Este bloque cierra el recorrido teórico uniendo lo aprendido en los dos anterio
 
 ## Laboratorios del bloque
 
-Ruta práctica del programa (labs **13–14**), enlazada también al final de cada capítulo:
+Ruta práctica del programa, enlazada también al final de cada capítulo:
 
-**[LAB 13 — Kafka en Kubernetes →](../lab-13-kafka-en-kubernetes/README.md)** · **[LAB 14 — Pipeline completo →](../lab-14-pipeline-completo/README.md)**
+| # | Tema | Enlace |
+|--:|------|--------|
+| 13 | Operación de Kafka en Kubernetes | [`lab-13-kafka-en-kubernetes`](../lab-13-kafka-en-kubernetes/README.md) |
+| 14 | Pipeline completo Producer → Topic → Consumer | [`lab-14-pipeline-completo`](../lab-14-pipeline-completo/README.md) |
 
 ## Capítulos
 

@@ -176,17 +176,21 @@ Visto cómo leer en paralelo y cómo recordar por dónde se iba, falta la otra m
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 7 — Consumer groups y rebalanceos →**](../lab-07-consumer-groups/README.md)
-
-[**Lab 8 — Offsets (earliest / latest / reset) →**](../lab-08-offsets/README.md)
-
-*Grupos, reparto de particiones y gestión de punteros de lectura.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 7 — Consumer groups →](../lab-07-consumer-groups/README.md)**
+>
+> **Descripción.** Trabajar con varios consumidores que cooperan bajo un mismo `group.id` y observar cómo Kafka reparte las particiones entre ellos.
+>
+> **Objetivos**
+> - Levantar varios consumidores en el mismo consumer group.
+> - Observar la asignación de particiones a consumidores.
+> - Provocar y leer un rebalanceo al añadir o quitar consumidores.
+>
+> **Encaja con este capítulo** porque materializa la regla central de los grupos: una partición sólo es leída por un consumidor del grupo, y los rebalanceos ocurren cuando cambia la composición.
+>
+> **Relacionado:** [Lab 8 — Offsets y control de consumo →](../lab-08-offsets/README.md) — gestión de `earliest` / `latest` y reset de offsets.
 
 ---
 

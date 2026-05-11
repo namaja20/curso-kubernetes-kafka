@@ -10,9 +10,14 @@ Este bloque cubre los fundamentos necesarios para entender qué es Kubernetes, q
 
 ## Laboratorios del bloque
 
-Ruta práctica del programa (labs **1–4**), enlazada también al final de cada capítulo:
+Ruta práctica del programa, enlazada también al final de cada capítulo:
 
-**[LAB 1 — Despliegue →](../lab-01-despliegue/README.md)** · **[LAB 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)** · **[LAB 3 — Diagnóstico →](../lab-03-diagnostico/README.md)** · **[LAB 4 — ConfigMaps y Secrets →](../lab-04-configuracion/README.md)**
+| # | Tema | Enlace |
+|--:|------|--------|
+| 1 | Despliegue de aplicaciones | [`lab-01-despliegue`](../lab-01-despliegue/README.md) |
+| 2 | Escalado y actualizaciones | [`lab-02-escalado-actualizaciones`](../lab-02-escalado-actualizaciones/README.md) |
+| 3 | Diagnóstico de incidencias | [`lab-03-diagnostico`](../lab-03-diagnostico/README.md) |
+| 4 | ConfigMaps y Secrets | [`lab-04-configuracion`](../lab-04-configuracion/README.md) |
 
 ## Capítulos
 

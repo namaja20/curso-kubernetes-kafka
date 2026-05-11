@@ -162,15 +162,19 @@ El siguiente bloque une lo aprendido en los dos primeros: cómo se ve **Kafka op
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 13 — Kafka en Kubernetes →**](../../bloque-3-integracion/lab-13-kafka-en-kubernetes/README.md)
-
-*Pods, logs y reinicio de componentes Kafka en el clúster.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 13 — Operación de Kafka en Kubernetes →](../../bloque-3-integracion/lab-13-kafka-en-kubernetes/README.md)**
+>
+> **Descripción.** Inspeccionar un cluster Kafka desplegado por CFK desde el plano de Kubernetes: pods que componen el cluster, logs de cada componente y reinicio controlado.
+>
+> **Objetivos**
+> - Listar e identificar los pods del cluster (brokers, controladores, Schema Registry, Connect…).
+> - Analizar los logs de un broker o del operador.
+> - Provocar un reinicio controlado y observar cómo el cluster lo absorbe.
+>
+> **Encaja con este capítulo** porque el lab muestra **el resultado de aplicar un CR** gestionado por CFK: StatefulSets, Services y volúmenes que el operador ha generado a partir de la definición declarativa.
 
 ---
 

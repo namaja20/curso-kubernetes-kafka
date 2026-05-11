@@ -160,15 +160,19 @@ Vista la arquitectura y dónde vive el estado, toca bajar al objeto más básico
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
-
-*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 3 — Diagnóstico de incidencias →](../lab-03-diagnostico/README.md)**
+>
+> **Descripción.** Aprender a leer un cluster cuando algo no funciona: estados de un pod, eventos del scheduler y mensajes del kubelet.
+>
+> **Objetivos**
+> - Analizar un pod en error a partir de un escenario preparado.
+> - Usar logs y eventos del cluster para identificar la causa.
+> - Distinguir estados clásicos (`Pending`, `CrashLoopBackOff`, `ImagePullBackOff`, …).
+>
+> **Encaja con este capítulo** porque pone en juego las piezas del control plane y del nodo (API server, scheduler, kubelet, probes) que se acaban de presentar: cada incidencia se rastrea siguiendo el camino que recorre un pod.
 
 ---
 

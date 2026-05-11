@@ -110,15 +110,19 @@ El siguiente paso natural es **profundizar en operación avanzada**: monitorizac
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 14 — Pipeline completo Producer → Topic → Consumer →**](../lab-14-pipeline-completo/README.md)
-
-*Cierre práctico del curso: extremo a extremo sobre el montaje integrado.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 14 — Pipeline completo →](../lab-14-pipeline-completo/README.md)**
+>
+> **Descripción.** Ejercitar el flujo Producer → Topic → Consumer completo sobre el cluster integrado y observar el sistema funcionando de extremo a extremo.
+>
+> **Objetivos**
+> - Producir mensajes contra un topic del cluster integrado.
+> - Consumir esos mensajes con un consumer group.
+> - Observar el comportamiento del pipeline desde ambas capas (Kubernetes y Kafka).
+>
+> **Encaja con este capítulo** porque es exactamente el pipeline cuya checklist mental se describe aquí: cada salto (descubrimiento, partición elegida, ISR, commit del offset) se hace observable en un escenario real.
 
 ---
 

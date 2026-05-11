@@ -103,15 +103,19 @@ Visto qué es un contenedor y cómo se empaqueta con Docker, falta una pregunta 
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
-
-*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas de este bloque (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)**
+>
+> **Descripción.** Primer contacto práctico: ejecutar una aplicación contenedorizada en Kubernetes y exponerla a la red interna.
+>
+> **Objetivos**
+> - Crear un Deployment a partir de una imagen de contenedor.
+> - Exponer la aplicación mediante un Service.
+> - Observar el estado de los pods y la conectividad interna.
+>
+> **Encaja con este capítulo** porque comprueba en la práctica que lo que ejecuta Kubernetes son **contenedores** (los conceptos vistos aquí), no máquinas virtuales: pods que arrancan en segundos, comparten kernel y son efímeros.
 
 ---
 

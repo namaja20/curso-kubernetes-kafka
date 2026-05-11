@@ -116,15 +116,19 @@ Justificada la existencia de Kubernetes y vista su función a alto nivel, toca a
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
-
-*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 2 — Escalado y actualizaciones →](../lab-02-escalado-actualizaciones/README.md)**
+>
+> **Descripción.** Ejercitar el ciclo de vida de una aplicación gestionada por Kubernetes: cambios de tamaño, actualización de versión y rollback.
+>
+> **Objetivos**
+> - Escalar el Deployment a más réplicas y volver al tamaño original.
+> - Actualizar la versión de la imagen y observar el rolling update.
+> - Ejecutar un rollback a la versión anterior.
+>
+> **Encaja con este capítulo** porque toca **los problemas que justifican Kubernetes**: N copias siempre vivas, escalado declarativo y cambios de versión sin caída — exactamente el bucle de reconciliación visto aquí.
 
 ---
 

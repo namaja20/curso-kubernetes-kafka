@@ -149,17 +149,21 @@ Falta un componente vital: quién decide quién es líder, quién entra y sale d
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 9 — Replicación e ISR, fallo de broker →**](../lab-09-replicacion-fallos/README.md)
-
-[**Lab 10 — Diagnóstico de lag →**](../lab-10-diagnostico-lag/README.md)
-
-*Líderes, ISR bajo carga y lectura de lag en consumer groups.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 9 — Replicación y tolerancia a fallos →](../lab-09-replicacion-fallos/README.md)**
+>
+> **Descripción.** Observar la alta disponibilidad del cluster simulando la caída de un broker: cambio de líder, evolución del ISR y continuidad del servicio.
+>
+> **Objetivos**
+> - Simular la caída de un broker en un cluster multi-broker.
+> - Analizar quién es líder, quiénes están en ISR y cómo cambian tras el fallo.
+> - Comprobar que productores y consumidores se recuperan sin pérdida si la configuración es correcta.
+>
+> **Encaja con este capítulo** porque pone en acción los conceptos clave recién vistos: réplica líder, seguidores, ISR, `min.insync.replicas` y elección de nuevo líder.
+>
+> **Relacionado:** [Lab 10 — Diagnóstico de lag →](../lab-10-diagnostico-lag/README.md) — medir el retraso del consumo en escenarios de carga desequilibrada.
 
 ---
 

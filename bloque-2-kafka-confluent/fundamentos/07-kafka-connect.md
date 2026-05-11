@@ -145,15 +145,19 @@ Connect mueve datos sin transformarlos mucho. Cuando hace falta **filtrar, agreg
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
-
-*El laboratorio guiado del bloque sobre integración con Connect.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
+>
+> **Descripción.** Levantar un pipeline declarativo de ingesta: una base de datos como origen y un topic Kafka como destino, sin escribir un productor.
+>
+> **Objetivos**
+> - Configurar un conector **JDBC Source** mediante su JSON de configuración.
+> - Lanzar el conector a través de la API REST de Connect.
+> - Comprobar que los registros aparecen en el topic Kafka destino.
+>
+> **Encaja con este capítulo** porque es justo el escenario canónico de Connect (Source → Topic), y permite ver en acción las tres piezas vistas aquí: **conector** (definición lógica), **task** (instancia de paralelismo) y **worker** (proceso que la ejecuta).
 
 ---
 

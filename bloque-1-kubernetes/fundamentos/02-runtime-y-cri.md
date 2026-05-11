@@ -111,15 +111,19 @@ Visto qué es un contenedor y quién lo ejecuta dentro de un nodo, la siguiente 
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 1 — Despliegue de aplicaciones →**](../lab-01-despliegue/README.md)
-
-*Práctica del bloque 1. Punto de entrada recomendado al terminar los cinco temas (en especial tras [Objetos y pods](05-objetos-y-pods.md)).*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 1 — Despliegue de aplicaciones →](../lab-01-despliegue/README.md)**
+>
+> **Descripción.** Primer contacto práctico: ejecutar una aplicación contenedorizada en Kubernetes y exponerla a la red interna.
+>
+> **Objetivos**
+> - Crear un Deployment a partir de una imagen de contenedor.
+> - Exponer la aplicación mediante un Service.
+> - Observar el estado de los pods y la conectividad interna.
+>
+> **Encaja con este capítulo** porque, una vez visto **quién** ejecuta los contenedores en el nodo (kubelet → CRI → containerd), el lab muestra ese flujo en acción al programar un pod en un cluster real.
 
 ---
 

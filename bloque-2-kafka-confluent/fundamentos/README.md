@@ -8,9 +8,18 @@ Este bloque desarrolla el modelo conceptual de Apache Kafka y los componentes de
 
 ## Laboratorios del bloque
 
-Ruta práctica del programa (labs **5–12**), enlazada también al final de cada capítulo:
+Ruta práctica del programa, enlazada también al final de cada capítulo:
 
-**[LAB 5 — Flujo básico →](../lab-05-flujo-basico/README.md)** · **[LAB 6 — Particiones →](../lab-06-particiones/README.md)** · **[LAB 7 — Consumer groups →](../lab-07-consumer-groups/README.md)** · **[LAB 8 — Offsets →](../lab-08-offsets/README.md)** · **[LAB 9 — Replicación y fallos →](../lab-09-replicacion-fallos/README.md)** · **[LAB 10 — Diagnóstico de lag →](../lab-10-diagnostico-lag/README.md)** · **[LAB 11 — Operación de topics →](../lab-11-operacion-topics/README.md)** · **[LAB 12 — Kafka Connect →](../lab-12-kafka-connect/README.md)**
+| # | Tema | Enlace |
+|--:|------|--------|
+| 5 | Flujo básico de datos | [`lab-05-flujo-basico`](../lab-05-flujo-basico/README.md) |
+| 6 | Particiones y distribución | [`lab-06-particiones`](../lab-06-particiones/README.md) |
+| 7 | Consumer groups | [`lab-07-consumer-groups`](../lab-07-consumer-groups/README.md) |
+| 8 | Offsets y control de consumo | [`lab-08-offsets`](../lab-08-offsets/README.md) |
+| 9 | Replicación y tolerancia a fallos | [`lab-09-replicacion-fallos`](../lab-09-replicacion-fallos/README.md) |
+| 10 | Diagnóstico de lag | [`lab-10-diagnostico-lag`](../lab-10-diagnostico-lag/README.md) |
+| 11 | Operación de topics | [`lab-11-operacion-topics`](../lab-11-operacion-topics/README.md) |
+| 12 | Integración con Kafka Connect | [`lab-12-kafka-connect`](../lab-12-kafka-connect/README.md) |
 
 ## Capítulos
 

@@ -157,15 +157,21 @@ Cerrado el núcleo de Kafka (qué es, cómo se reparte, cómo se replica, cómo 
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 11 — Operación de topics →**](../lab-11-operacion-topics/README.md)
-
-*Retención, configuración a nivel de topic y operación del cluster.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 11 — Operación de topics →](../lab-11-operacion-topics/README.md)**
+>
+> **Descripción.** Operar el cluster sobre topics existentes: modificar retención y otras propiedades, y comprobar el efecto observable.
+>
+> **Objetivos**
+> - Modificar la retención (`retention.ms`, `retention.bytes`) de un topic.
+> - Cambiar alguna otra propiedad relevante a nivel de topic.
+> - Comprobar el impacto sobre los datos y el comportamiento del cluster.
+>
+> **Encaja con este capítulo** porque la operación del cluster (creación de topics, cambios de configuración, gestión de metadatos) es precisamente el trabajo que en Kafka moderno realiza el quorum **KRaft**: cada cambio aplicado aquí es un cambio en `__cluster_metadata`.
+>
+> **Relacionado:** [Lab 9 — Replicación y tolerancia a fallos →](../lab-09-replicacion-fallos/README.md) — el failover que se ve allí depende de que el quorum KRaft elija un nuevo líder.
 
 ---
 

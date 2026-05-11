@@ -135,15 +135,19 @@ Recorrido el ecosistema Confluent (Schema Registry para contratos, Connect para 
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
-
-*ksqlDB no tiene laboratorio dedicado en el programa; la práctica de integración del bloque es Connect (Lab 12).*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
+>
+> **Descripción.** Aunque ksqlDB no tiene laboratorio dedicado en el programa, comparte motor (Kafka Streams) y filosofía declarativa con la integración de Connect: ambas piezas describen el pipeline como configuración, no como código.
+>
+> **Objetivos**
+> - Reproducir un pipeline declarativo origen → topic con Kafka Connect.
+> - Observar cómo el dato llega al topic Kafka listo para ser consumido por ksqlDB u otro procesador de streams.
+> - Identificar dónde encajaría una query ksqlDB sobre el topic resultante.
+>
+> **Encaja con este capítulo** porque ksqlDB suele consumir lo que Connect produce: comprender Connect (origen) es el paso natural antes de construir streams y tablas en ksqlDB.
 
 ---
 

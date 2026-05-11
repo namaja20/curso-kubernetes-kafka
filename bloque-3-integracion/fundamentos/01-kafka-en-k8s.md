@@ -145,15 +145,20 @@ Visto el modelo operativo completo, falta el ejercicio práctico: **construir y 
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 13 — Kafka en Kubernetes →**](../lab-13-kafka-en-kubernetes/README.md)
-
-*Inspección de pods, logs y reinicios en el entorno integrado.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 13 — Operación de Kafka en Kubernetes →](../lab-13-kafka-en-kubernetes/README.md)**
+>
+> **Descripción.** Operar el cluster Confluent recorriendo las dos capas a la vez (Kubernetes y Kafka): identificar pods, leer logs, simular un reinicio y observar la recuperación.
+>
+> **Objetivos**
+> - Inspeccionar los pods del cluster Kafka (incluido el operador).
+> - Analizar logs de los componentes implicados.
+> - Simular un reinicio controlado de un broker u otro componente.
+> - Verificar el impacto en el sistema y la recuperación automática.
+>
+> **Encaja con este capítulo** porque pone en práctica el diagnóstico **a dos capas** descrito aquí: plano Kubernetes (`kubectl describe`, logs, events) y plano Kafka (`kafka-topics --describe`, ISR, métricas).
 
 ---
 

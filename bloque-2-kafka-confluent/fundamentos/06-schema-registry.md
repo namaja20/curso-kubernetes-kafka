@@ -143,15 +143,19 @@ Visto cómo **garantizar el contrato** del dato, ahora la otra pieza estrella de
 
 ---
 
-<div align="center">
-
-### Laboratorio !!
-
-[**Lab 12 — Kafka Connect (JDBC → Kafka) →**](../lab-12-kafka-connect/README.md)
-
-*Integración declarativa; encaja con esquemas y serialización del ecosistema Confluent.*
-
-</div>
+> [!TIP]
+> ### Laboratorio
+>
+> **[Lab 12 — Integración con Kafka Connect →](../lab-12-kafka-connect/README.md)**
+>
+> **Descripción.** Configurar un conector **JDBC → Kafka** y mover datos desde una base de datos hacia un topic, con serialización gestionada por **Schema Registry**.
+>
+> **Objetivos**
+> - Definir un conector JDBC Source mediante su JSON de configuración.
+> - Elegir el **converter** apropiado (Avro / JSON Schema / Protobuf) contra Schema Registry.
+> - Verificar que los mensajes producidos respetan un esquema registrado.
+>
+> **Encaja con este capítulo** porque el lab usa Schema Registry **en su rol natural**: el conector registra el esquema y los consumidores lo recuperan para deserializar, dejando ver el ciclo completo de contrato de datos.
 
 ---
 
