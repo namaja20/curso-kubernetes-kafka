@@ -1,0 +1,93 @@
+# ============================================================
+# 🧪 Test My IP — versión 100 % funcional (Express 5 compatible)
+# ============================================================
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-my-ip-code
+  namespace: llamalitica
+data:
+  server.js: |
+    const express = require('express');
+    const app = express();
+
+    app.set('trust proxy', true);
+
+    app.use((req, res) => {
+      const info = {
+        remoteAddress: req.socket.remoteAddress,
+        ip: req.ip,
+        ips: req.ips,
+        headers: {
+          'x-forwarded-for': req.headers['x-forwarded-for'],
+          'x-real-ip': req.headers['x-real-ip'],
+          'x-forwarded-host': req.headers['x-forwarded-host'],
+          'x-forwarded-proto': req.headers['x-forwarded-proto'],
+          host: req.headers['host'],
+          connection: req.headers['connection']
+        }
+      };
+      console.log('📡 Incoming request:', info);
+      res.json(info);
+    });
+
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`🚀 Test My IP server listening on ${port}`));
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-my-ip
+  namespace: llamalitica
+  labels:
+    app: test-my-ip
+spec:
+  restartPolicy: Always
+  containers:
+    - name: node
+      image: node:18-alpine
+      ports:
+        - containerPort: 3000
+      command:
+        - /bin/sh
+        - -c
+        - |
+          set -ex
+          mkdir -p /app
+          cp /config/server.js /app/
+          cd /app
+          npm init -y >/dev/null
+          npm install express@4 >/dev/null
+          node server.js
+      volumeMounts:
+        - name: code
+          mountPath: /config
+        - name: appdir
+          mountPath: /app
+  volumes:
+    - name: code
+      configMap:
+        name: test-my-ip-code
+    - name: appdir
+      emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-my-ip
+  namespace: llamalitica
+  labels:
+    app: test-my-ip
+spec:
+  selector:
+    app: test-my-ip
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+  type: ClusterIP
