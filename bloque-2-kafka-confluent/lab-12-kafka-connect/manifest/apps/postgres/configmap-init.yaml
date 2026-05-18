@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init
+  namespace: lab12
+data:
+  01-init.sql: |
+    CREATE TABLE pedidos (
+      id SERIAL PRIMARY KEY,
+      cliente VARCHAR(80) NOT NULL,
+      importe NUMERIC(12,2) NOT NULL,
+      created_at TIMESTAMP DEFAULT NOW()
+    );
+    INSERT INTO pedidos (cliente, importe) VALUES
+      ('ACME', 120.50),
+      ('Globex', 89.99),
+      ('Initech', 450.00);

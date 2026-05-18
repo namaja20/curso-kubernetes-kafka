@@ -1,0 +1,14 @@
+{
+  "name": "jdbc-source-pedidos",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "tasks.max": "1",
+    "connection.url": "jdbc:postgresql://postgres.lab12.svc.cluster.local:5432/demo",
+    "connection.user": "demo",
+    "connection.password": "demo",
+    "table.whitelist": "pedidos",
+    "mode": "incrementing",
+    "incrementing.column.name": "id",
+    "topic.prefix": "jdbc-"
+  }
+}
