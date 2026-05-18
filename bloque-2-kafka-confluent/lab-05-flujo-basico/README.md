@@ -22,6 +22,10 @@ Este cluster es la **base de los laboratorios 6 a 9**: no se vuelve a desplegar;
 
 Los laboratorios del bloque 2 están pensados para el **rol de operador de plataforma**: quien despliega y mantiene Kafka en Kubernetes para que los equipos de aplicación lo consuman desde sus propios namespaces. No se programa: se opera el cluster con `kubectl` y las CLIs oficiales de Kafka, y se observa el comportamiento del log distribuido.
 
+## Referencia de comandos
+
+Hoja de comandos CLI contra el cluster: [Cheatsheet — Comandos Kafka](../docs/cheatsheet-comandos-kafka.md).
+
 ## Prerrequisitos
 
 - Cluster `kind-curso` activo (Lab 0). Comprueba: `kubectl get nodes` debe listar 3 nodos en `Ready`.
