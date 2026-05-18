@@ -1,5 +1,7 @@
 # LAB 11 — Operación de topics
 
+> **Entorno.** Pod **`kafka-cli`** en `app-a` (`kafka-topics`, `kafka-configs`). [Entorno de práctica: pod kafka-cli](../docs/entorno-practica-kafka-cli.md)
+
 ## Objetivo
 
 Gestionar configuración del cluster a nivel de topic (operación real).

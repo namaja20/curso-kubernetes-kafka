@@ -73,11 +73,14 @@ Si el controlador activo se cae, el quorum **elige otro** automáticamente (en s
 
 ## Comprobar el modo y el quorum
 
-Comandos útiles para diagnóstico:
+Comandos útiles para diagnóstico (desde el pod **`kafka-cli`** en `app-a`):
 
 ```bash
-kafka-metadata-quorum --bootstrap-server <host> describe --status
-kafka-metadata-quorum --bootstrap-server <host> describe --replication
+kubectl -n app-a exec deploy/kafka-cli -- kafka-metadata-quorum \
+  --bootstrap-server kafka.kafka.svc.cluster.local:9092 describe --status
+
+kubectl -n app-a exec deploy/kafka-cli -- kafka-metadata-quorum \
+  --bootstrap-server kafka.kafka.svc.cluster.local:9092 describe --replication
 ```
 
 Muestran:

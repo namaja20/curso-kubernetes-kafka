@@ -6,6 +6,12 @@
 
 Este bloque desarrolla el modelo conceptual de Apache Kafka y los componentes del ecosistema Confluent. Empieza por la idea más básica —el log distribuido— y avanza hasta los componentes de mayor nivel (Schema Registry, Connect, ksqlDB) y al modo en que se opera todo ello en Kubernetes a través de un operador.
 
+## Entorno de práctica (pod `kafka-cli`)
+
+Las demos operativas del bloque (topics, productores/consumidores de consola, consumer groups, lag, etc.) se ejecutan desde un **pod dedicado `kafka-cli`** en el namespace de inquilino `app-a`, usando la imagen **`confluentinc/cp-kafka`** solo como contenedor de herramientas — **no como broker**. El cluster Kafka (brokers en el namespace `kafka`) se despliega una vez en el Lab 5 y se reutiliza en los Labs 6–12.
+
+➡️ [Entorno de práctica: pod kafka-cli](../docs/entorno-practica-kafka-cli.md) · [Cheatsheet de comandos](../docs/cheatsheet-comandos-kafka.md)
+
 ## Laboratorios del bloque
 
 Ruta práctica del programa, enlazada también al final de cada capítulo:

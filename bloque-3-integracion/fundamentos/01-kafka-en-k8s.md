@@ -69,9 +69,9 @@ Un broker puede estar 'Running' en Kubernetes y 'fuera del ISR' en Kafka. Las do
 | Tarea | Capa | Cómo |
 |-------|------|------|
 | Levantar / bajar el cluster | K8s + CFK | Modificar CR `Kafka` (réplicas, recursos). |
-| Crear un topic | Kafka (o CFK) | `kafka-topics --create ...` o CR `KafkaTopic`. |
-| Cambiar retención de un topic | Kafka | `kafka-configs --alter ...`. |
-| Ver consumer groups y lag | Kafka | `kafka-consumer-groups --describe ...`. |
+| Crear un topic | Kafka (o CFK) | `kafka-topics --create ...` desde pod **`kafka-cli`** o CR `KafkaTopic`. |
+| Cambiar retención de un topic | Kafka | `kafka-configs --alter ...` desde pod **`kafka-cli`**. |
+| Ver consumer groups y lag | Kafka | `kafka-consumer-groups --describe ...` desde pod **`kafka-cli`**. |
 | Reiniciar un broker | K8s | `kubectl delete pod kafka-N` (StatefulSet lo recrea). |
 | Reemplazar un broker | K8s + CFK | Reescalar StatefulSet vía CR; CFK reasigna. |
 | Rotar certificados | CFK | El operador gestiona la rotación al cambiar el secreto. |

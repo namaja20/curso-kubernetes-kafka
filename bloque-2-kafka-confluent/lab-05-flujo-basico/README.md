@@ -8,19 +8,21 @@
 
 ## Objetivo
 
-Levantar un **cluster Kafka de 3 brokers en modo KRaft** sobre el cluster Kubernetes del [Lab 0](../../bloque-1-kubernetes/lab-00-entorno/README.md) y validar el flujo completo de mensajes desde un pod cliente que simula a un equipo de aplicación.
+Levantar un **cluster Kafka de 3 brokers en modo KRaft** sobre el cluster Kubernetes del [Lab 0](../../bloque-1-kubernetes/lab-00-entorno/README.md), desplegar el pod **`kafka-cli`** (rol CLI) y validar el flujo completo de mensajes desde ese pod.
 
 Al terminar este laboratorio existe en el cluster:
 
-- Un **namespace de plataforma** (`kafka`) con un StatefulSet de **3 brokers** y sus Services.
-- Un **namespace de inquilino** (`app-a`) con un pod cliente que dispone de las CLIs `kafka-topics`, `kafka-console-producer` y `kafka-console-consumer`.
+- Un **namespace de plataforma** (`kafka`) con un StatefulSet de **3 brokers** (`kafka-0` … `kafka-2`) y sus Services.
+- Un **namespace de inquilino** (`app-a`) con el Deployment **`kafka-cli`**: pod con rol **solo CLI** (imagen `confluentinc/cp-kafka`, sin proceso broker; `sleep infinity` + `kubectl exec`).
 - Un primer **topic** (`eventos`) operativo y persistido, con mensajes leídos y releídos para comprobar que el log no se vacía al consumir.
 
-Este cluster es la **base de los laboratorios 6 a 9**: no se vuelve a desplegar; en cada lab se actúan operaciones sobre él (claves, consumer groups, offsets, replicación, lag, retención).
+➡️ Patrón documentado: [Entorno de práctica: pod kafka-cli](../docs/entorno-practica-kafka-cli.md)
+
+Este cluster y el pod **`kafka-cli`** son la **base de los laboratorios 6 a 12**: no se vuelven a desplegar; en cada lab las demos se lanzan con `kubectl -n app-a exec deploy/kafka-cli -- …`.
 
 ## Perfil de quien hace este lab
 
-Los laboratorios del bloque 2 están pensados para el **rol de operador de plataforma**: quien despliega y mantiene Kafka en Kubernetes para que los equipos de aplicación lo consuman desde sus propios namespaces. No se programa: se opera el cluster con `kubectl` y las CLIs oficiales de Kafka, y se observa el comportamiento del log distribuido.
+Los laboratorios del bloque 2 están pensados para el **rol de operador de plataforma**: quien despliega y mantiene Kafka en Kubernetes para que los equipos de aplicación lo consuman desde sus propios namespaces. No se programa: se opera con `kubectl` y, para las demos de Kafka, con comandos `kafka-*` ejecutados **en el pod `kafka-cli`** (imagen `confluentinc/cp-kafka` usada solo como contenedor de herramientas).
 
 ## Referencia de comandos
 
@@ -51,8 +53,8 @@ lab-05-flujo-basico/
         │   ├── service-headless.yaml
         │   ├── service-bootstrap.yaml
         │   └── statefulset.yaml
-        └── client/                     # responsabilidad del equipo de aplicación (simulado)
-            └── deployment.yaml
+        └── client/                     # pod kafka-cli (rol CLI, no broker)
+            └── deployment.yaml         # Deployment kafka-cli en app-a
 ```
 
 ## Paso 1 — Namespaces (plataforma + inquilino)
@@ -244,11 +246,13 @@ Cuando los 3 estén `1/1 Ready`:
 kubectl -n kafka get pods,svc,pvc
 ```
 
-## Paso 5 — Pod cliente del inquilino `app-a`
+## Paso 5 — Pod `kafka-cli` (rol CLI en el inquilino `app-a`)
+
+Este paso despliega el **pod de operación** del bloque: no es un broker, es un contenedor con la misma imagen Confluent solo para ejecutar comandos `kafka-*` vía `kubectl exec`. Todas las demos de topics, produce/consume y consumer groups de los Labs 5–10 parten de aquí.
 
 ### El manifiesto
 
-[`manifest/apps/client/deployment.yaml`](manifest/apps/client/deployment.yaml) crea un ConfigMap con las propiedades del cliente y un pod en `app-a`:
+[`manifest/apps/client/deployment.yaml`](manifest/apps/client/deployment.yaml) crea un ConfigMap con las propiedades del cliente y el Deployment **`kafka-cli`** en `app-a`:
 
 ```yaml
 apiVersion: v1
@@ -285,7 +289,7 @@ spec:
           configMap: { name: kafka-client-config }
 ```
 
-El pod **no produce ni consume por sí mismo**; está ahí para que el operador entre con `kubectl exec` y ejecute las CLIs oficiales. Es la forma más limpia de no depender del entorno local del alumno.
+El pod **no arranca Kafka**: `command: ["sleep", "infinity"]`. Los binarios (`kafka-topics`, `kafka-console-producer`, …) ya están en el `PATH` de la imagen `cp-kafka`. El operador entra con `kubectl exec` y lanza las demos; no hace falta instalar nada en el Codespace salvo `kubectl`.
 
 ### Aplicarlo
 

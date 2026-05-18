@@ -94,7 +94,7 @@ flowchart LR
 
 ## Preguntas frecuentes
 
-- **¿Hace falta escribir código real?** Para una primera prueba pueden usarse las herramientas CLI de Confluent (`kafka-console-producer`, `kafka-console-consumer`) o pequeños scripts/aplicaciones de referencia. El objetivo no es el código sino la **observación**.
+- **¿Hace falta escribir código real?** Para una primera prueba se usan las CLIs `kafka-console-producer` y `kafka-console-consumer` **desde el pod `kafka-cli`** (imagen `confluentinc/cp-kafka`, rol solo herramientas). El objetivo no es el código sino la **observación**. Ver [Entorno de práctica: pod kafka-cli](../../bloque-2-kafka-confluent/docs/entorno-practica-kafka-cli.md).
 - **¿Y si el productor escribe más rápido de lo que se procesa?** El topic absorbe; el consumer group acumula lag. Es la situación más común en producción y la que motiva escalado y monitorización.
 - **¿Esto sirve para diagnosticar problemas reales?** Esa es la idea. Los principios son los mismos en un cluster pequeño de 3 brokers que en uno de 30 brokers en producción.
 

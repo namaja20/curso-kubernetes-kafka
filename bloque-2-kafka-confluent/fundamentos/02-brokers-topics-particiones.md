@@ -113,13 +113,17 @@ Los líderes están **distribuidos** entre los brokers para balancear carga. Est
 
 ## Cómo se ve desde la CLI
 
+En el curso estos comandos se ejecutan **desde el pod `kafka-cli`** (Deployment en `app-a`, imagen `confluentinc/cp-kafka` en rol solo herramientas — no broker). Ver [Entorno de práctica: pod kafka-cli](../docs/entorno-practica-kafka-cli.md).
+
 Para anclar (sin entrar todavía en operación profunda):
 
-- Listar topics: `kafka-topics --bootstrap-server <host> --list`
-- Ver detalle de un topic: `kafka-topics --bootstrap-server <host> --describe --topic <t>`
-- Crear topic: `kafka-topics --bootstrap-server <host> --create --topic <t> --partitions 6 --replication-factor 3`
+```bash
+kubectl -n app-a exec deploy/kafka-cli -- kafka-topics --bootstrap-server kafka.kafka.svc.cluster.local:9092 --list
+kubectl -n app-a exec deploy/kafka-cli -- kafka-topics --bootstrap-server kafka.kafka.svc.cluster.local:9092 --describe --topic <t>
+kubectl -n app-a exec deploy/kafka-cli -- kafka-topics --bootstrap-server kafka.kafka.svc.cluster.local:9092 --create --topic <t> --partitions 6 --replication-factor 3
+```
 
-El `--describe` es uno de los comandos más usados: muestra, para cada partición, quién es líder, quiénes son réplicas, quiénes están "en sync".
+El `--describe` es uno de los comandos más usados: muestra, para cada partición, quién es líder, quiénes son réplicas, quiénes están "en sync". Referencia completa: [Cheatsheet de comandos](../docs/cheatsheet-comandos-kafka.md).
 
 ## Preguntas frecuentes
 

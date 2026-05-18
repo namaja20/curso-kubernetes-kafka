@@ -124,9 +124,14 @@ lag creciente  ≈ algo va mal
 
 ## Comandos de bolsillo
 
+Se ejecutan desde el pod **`kafka-cli`** en `app-a` (misma convención que el resto del bloque; ver [Entorno de práctica: pod kafka-cli](../docs/entorno-practica-kafka-cli.md)):
+
 ```bash
-kafka-consumer-groups --bootstrap-server ... --list
-kafka-consumer-groups --bootstrap-server ... --describe --group mi-grupo
+kubectl -n app-a exec deploy/kafka-cli -- kafka-consumer-groups \
+  --bootstrap-server kafka.kafka.svc.cluster.local:9092 --list
+
+kubectl -n app-a exec deploy/kafka-cli -- kafka-consumer-groups \
+  --bootstrap-server kafka.kafka.svc.cluster.local:9092 --describe --group mi-grupo
 ```
 
 Ese último es el comando estrella del operador de Kafka: muestra para cada partición su líder, su offset committed, el LEO y el lag. Es el "kubectl get pods" del mundo Kafka.

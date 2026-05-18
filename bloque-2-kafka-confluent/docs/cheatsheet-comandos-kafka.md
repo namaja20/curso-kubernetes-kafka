@@ -1,10 +1,21 @@
 # Cheatsheet — Comandos Kafka (operación contra cluster)
 
-Referencia rápida para operar un cluster Kafka desde el entorno del curso (imagen `confluentinc/cp-kafka`, CLIs en el `PATH`). No sustituye la documentación oficial; recoge los comandos usados en los laboratorios y en los capítulos de fundamentos.
+Referencia rápida para operar un cluster Kafka desde el entorno del curso. No sustituye la documentación oficial; recoge los comandos usados en los laboratorios y en los capítulos de fundamentos.
+
+## Dónde se ejecutan los comandos
+
+Todos los binarios `kafka-*` vienen en la imagen **`confluentinc/cp-kafka`**. En clase **no se usan en los pods broker** para las demos habituales, sino en el pod con rol **`kafka-cli`** (Deployment en `app-a`): misma imagen, pero el contenedor solo hace `sleep infinity` y sirve de shell para `kubectl exec`.
+
+| Rol | Recurso | Namespace |
+|-----|---------|-----------|
+| Brokers | StatefulSet `kafka` | `kafka` |
+| **CLI (demos)** | Deployment **`kafka-cli`** | `app-a` |
+
+Detalle del patrón: [Entorno de práctica: pod kafka-cli](entorno-practica-kafka-cli.md). Despliegue inicial: [Lab 5](../lab-05-flujo-basico/README.md).
 
 ## Cómo ejecutar los comandos
 
-En el [Lab 5](../lab-05-flujo-basico/README.md) el cluster queda en el namespace `kafka` y el pod cliente en `app-a`:
+Siempre desde el pod **`kafka-cli`** (salvo que el enunciado indique inspección en un broker concreto):
 
 ```bash
 # Shell interactiva en el pod cliente (recomendado)
@@ -217,4 +228,4 @@ El operador de plataforma combina **kubectl** (pods, logs, reinicios) con **`kaf
 
 ---
 
-[← Índice del bloque](../fundamentos/README.md) · [Lab 5 — Flujo básico](../lab-05-flujo-basico/README.md)
+[← Entorno: pod kafka-cli](entorno-practica-kafka-cli.md) · [Índice del bloque](../fundamentos/README.md) · [Lab 5 — Flujo básico](../lab-05-flujo-basico/README.md)

@@ -16,6 +16,7 @@ metadata:
   namespace: app-a
   labels:
     app: kafka-cli
+    role: kafka-cli          # rol operativo: CLIs kafka-* (no ejecuta broker)
 spec:
   replicas: 1
   selector:
@@ -25,9 +26,11 @@ spec:
     metadata:
       labels:
         app: kafka-cli
+        role: kafka-cli
     spec:
       containers:
         - name: cli
+          # Misma imagen que los brokers; este pod solo usa los binarios kafka-* del PATH.
           image: confluentinc/cp-kafka:7.7.1
           command: ["sleep", "infinity"]
           env:
